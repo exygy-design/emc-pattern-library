@@ -1,0 +1,4843 @@
+<!doctype html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title></title>
+	
+	<link rel="stylesheet" href="/assets/fabricator/styles/f.css">
+
+	<!-- toolkit styles -->
+	<link rel="stylesheet" href="/assets/fabricator/styles/f.css">
+	<link rel="stylesheet" href="/assets/toolkit/styles/toolkit.css">
+	<!-- /toolkit styles -->
+
+</head>
+<body>
+	<!-- app icons -->
+	<svg style="display: none;">
+	  <symbol id="i-comment" viewBox="0 0 20 20">
+	    <path d="M18 6v7c0 1.1-0.9 2-2 2h-4v3l-4-3h-4c-1.101 0-2-0.9-2-2v-7c0-1.1 0.899-2 2-2h12c1.1 0 2 0.9 2 2z"></path>
+	  </symbol>
+	
+	  <symbol id="i-arrow-right" viewBox="0 0 100 100">
+	    <path d="M50.868,78.016l36.418-26.055c0.66-0.471,1.049-1.233,1.051-2.043c0-0.006,0-0.006,0-0.006
+	    c-0.002-0.815-0.396-1.575-1.059-2.048L50.86,21.977c-0.767-0.546-1.776-0.616-2.612-0.183c-0.835,0.426-1.361,1.292-1.361,2.236
+	    v12.183l-32.709-0.001c-1.39,0-2.515,1.125-2.515,2.516l0.001,22.541c-0.001,1.389,1.124,2.515,2.516,2.516l32.706,0v12.187
+	    c0,0.94,0.53,1.803,1.366,2.237C49.089,78.641,50.1,78.567,50.868,78.016z"/>
+	  </symbol>
+	
+	  <symbol id="i-alert" viewBox="0 0 20 20">
+	    <path d="M12 11.874v4.357l7-6.69-7-6.572v3.983c-8.775 0-11 9.732-11 9.732 2.484-4.388 6.237-4.81 11-4.81z"></path>
+	  </symbol>
+	
+	  <symbol id="i-info" viewBox="0 0 20 20">
+	    <path d="M10 0.4c-5.303 0-9.601 4.298-9.601 9.6 0 5.303 4.298 9.601 9.601 9.601 5.301 0 9.6-4.298 9.6-9.601s-4.299-9.6-9.6-9.6zM10.896 3.866c0.936 0 1.211 0.543 1.211 1.164 0 0.775-0.62 1.492-1.679 1.492-0.886 0-1.308-0.445-1.282-1.182 0-0.621 0.519-1.474 1.75-1.474zM8.498 15.75c-0.64 0-1.107-0.389-0.66-2.094l0.733-3.025c0.127-0.484 0.148-0.678 0-0.678-0.191 0-1.022 0.334-1.512 0.664l-0.319-0.523c1.555-1.299 3.343-2.061 4.108-2.061 0.64 0 0.746 0.756 0.427 1.92l-0.84 3.18c-0.149 0.562-0.085 0.756 0.064 0.756 0.192 0 0.82-0.232 1.438-0.719l0.362 0.486c-1.513 1.512-3.162 2.094-3.801 2.094z"></path>
+	  </symbol>
+	
+	  <symbol id="i-star" viewBox="0 0 20 20">
+	    <path d="M10 14.375l-5.156 3.125 1.367-5.859-4.531-3.945 5.977-0.508 2.344-5.508 2.344 5.508 5.977 0.508-4.531 3.945 1.367 5.859z"></path>
+	  </symbol>
+	
+	  <symbol id="i-menu" viewBox="0 0 20 20">
+	    <path d="M16.4 9h-12.8c-0.552 0-0.6 0.447-0.6 1s0.048 1 0.6 1h12.8c0.552 0 0.6-0.447 0.6-1s-0.048-1-0.6-1zM16.4 13h-12.8c-0.552 0-0.6 0.447-0.6 1s0.048 1 0.6 1h12.8c0.552 0 0.6-0.447 0.6-1s-0.048-1-0.6-1zM3.6 7h12.8c0.552 0 0.6-0.447 0.6-1s-0.048-1-0.6-1h-12.8c-0.552 0-0.6 0.447-0.6 1s0.048 1 0.6 1z"></path>
+	  </symbol>
+	
+	  <symbol id="i-cross" viewBox="0 0 20 20">
+	    <path d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z"></path>
+	  </symbol>
+	
+	  <symbol id="i-search" viewBox="0 0 20 20">
+	    <path d="M17.545 15.467l-3.779-3.779c0.57-0.935 0.898-2.035 0.898-3.21 0-3.417-2.961-6.377-6.378-6.377s-6.186 2.769-6.186 6.186c0 3.416 2.961 6.377 6.377 6.377 1.137 0 2.2-0.309 3.115-0.844l3.799 3.801c0.372 0.371 0.975 0.371 1.346 0l0.943-0.943c0.371-0.371 0.236-0.84-0.135-1.211zM4.004 8.287c0-2.366 1.917-4.283 4.282-4.283s4.474 2.107 4.474 4.474c0 2.365-1.918 4.283-4.283 4.283s-4.473-2.109-4.473-4.474z"></path>
+	  </symbol>
+	
+	  <symbol id="i-doc" viewBox="0 0 20 20">
+	    <path d="M13.864 0h-10.227c-1.004 0-1.818 0.815-1.818 1.818v16.364c0 1.004 0.815 1.818 1.818 1.818h12.727c1.004 0 1.818-0.815 1.818-1.818v-13.864l-4.318-4.318zM13.636 2.248l2.276 2.297h-2.276v-2.297zM16.364 18.182h-12.727v-16.364h8.182v4.545h4.545v11.818z"></path>
+	  </symbol>
+	
+	  <symbol id="i-clock" viewBox="0 0 20 20">
+	    <path d="M11 1.799c-4.445 0-8.061 3.562-8.169 7.996v0.205h-2.372l3.594 3.894 3.494-3.894h-2.672v-0.205c0.107-3.303 2.808-5.945 6.125-5.945 3.386 0 6.131 2.754 6.131 6.15s-2.745 6.15-6.131 6.15c-1.357 0-2.611-0.445-3.627-1.193l-1.406 1.504c1.388 1.088 3.135 1.738 5.033 1.738 4.515 0 8.174-3.67 8.174-8.199s-3.659-8.201-8.174-8.201zM10 5v5c0 0.13 0.027 0.26 0.077 0.382s0.124 0.233 0.216 0.325l3.2 3.2c0.283-0.183 0.55-0.389 0.787-0.628l-2.28-2.279v-6h-2z"></path>
+	  </symbol>
+	
+	  <symbol id="i-reject" viewBox="0 0 20 20">
+	    <path d="M6.352 12.638c0.133 0.356-3.539 3.634-1.397 6.291 0.501 0.621 2.201-2.975 4.615-4.602 1.331-0.899 4.43-2.811 4.43-3.868v-6.842c0-1.271-4.914-2.617-8.648-2.617-1.369 0-3.352 8.576-3.352 9.939 0 1.367 4.221 1.343 4.352 1.699zM15 12.543c0.658 0 3-0.4 3-3.123v-4.848c0-2.721-2.342-3.021-3-3.021-0.657 0 1 0.572 1 2.26v6.373c0 1.768-1.657 2.359-1 2.359z"></path>
+	  </symbol>
+	
+	  <symbol id="i-check" viewBox="0 0 20 20">  
+	    <path d="M8.294 16.998c-0.435 0-0.847-0.203-1.111-0.553l-3.573-4.721c-0.465-0.613-0.344-1.486 0.27-1.951 0.615-0.467 1.488-0.344 1.953 0.27l2.351 3.104 5.911-9.492c0.407-0.652 1.267-0.852 1.921-0.445s0.854 1.266 0.446 1.92l-6.984 11.21c-0.242 0.391-0.661 0.635-1.12 0.656-0.022 0.002-0.042 0.002-0.064 0.002z"></path>
+	  </symbol>
+	
+	  <symbol id="i-more" viewBox="0 0 20 20">  
+	    <path d="M10.001 7.8c-1.215 0-2.201 0.985-2.201 2.2s0.986 2.2 2.201 2.2c1.215 0 2.199-0.985 2.199-2.2s-0.984-2.2-2.199-2.2zM3.001 7.8c-1.215 0-2.201 0.985-2.201 2.2s0.986 2.2 2.201 2.2c1.215 0 2.199-0.986 2.199-2.2s-0.984-2.2-2.199-2.2zM17.001 7.8c-1.215 0-2.201 0.985-2.201 2.2s0.986 2.2 2.201 2.2c1.215 0 2.199-0.985 2.199-2.2s-0.984-2.2-2.199-2.2z"></path>
+	  </symbol>
+	
+	  <symbol id="i-link" viewBox="0 0 20 20">
+	  <path d="M7.859 14.691l-0.81 0.805c-0.701 0.695-1.843 0.695-2.545 0-0.336-0.334-0.521-0.779-0.521-1.252s0.186-0.916 0.521-1.252l2.98-2.955c0.617-0.613 1.779-1.515 2.626-0.675 0.389 0.386 1.016 0.384 1.403-0.005 0.385-0.389 0.383-1.017-0.006-1.402-1.438-1.428-3.566-1.164-5.419 0.675l-2.98 2.956c-0.715 0.709-1.108 1.654-1.108 2.658 0 1.006 0.394 1.949 1.108 2.658 0.736 0.73 1.702 1.096 2.669 1.096s1.934-0.365 2.669-1.096l0.811-0.805c0.389-0.385 0.391-1.012 0.005-1.4s-1.014-0.39-1.403-0.006zM16.891 3.207c-1.547-1.534-3.709-1.617-5.139-0.197l-1.009 1.002c-0.389 0.386-0.392 1.013-0.006 1.401 0.386 0.389 1.013 0.391 1.402 0.005l1.010-1.001c0.74-0.736 1.711-0.431 2.346 0.197 0.336 0.335 0.522 0.779 0.522 1.252s-0.186 0.917-0.522 1.251l-3.18 3.154c-1.454 1.441-2.136 0.766-2.427 0.477-0.389-0.386-1.016-0.383-1.401 0.005s-0.384 1.017 0.005 1.401c0.668 0.662 1.43 0.99 2.228 0.99 0.977 0 2.010-0.492 2.993-1.467l3.18-3.153c0.712-0.71 1.107-1.654 1.107-2.658s-0.395-1.949-1.109-2.659z"></path>
+	  </symbol>
+	
+	  <symbol id="i-download" viewBox="0 0 24 24">
+	<path d="M21 3.516q0.797 0 1.406 0.586t0.609 1.383v14.016q0 0.797-0.609 1.406t-1.406 0.609h-18q-0.797 0-1.406-0.609t-0.609-1.406v-14.016q0-0.797 0.609-1.383t1.406-0.586h6v1.969h-6v14.016h18v-14.016h-6v-1.969h6zM12 16.5l-3.984-3.984h3v-9h1.969v9h3z"></path>
+	  </symbol>
+	
+	  <symbol id="i-comment" viewBox="0 0 20 20">
+	  <path d="M18 6v7c0 1.1-0.9 2-2 2h-4v3l-4-3h-4c-1.101 0-2-0.9-2-2v-7c0-1.1 0.899-2 2-2h12c1.1 0 2 0.9 2 2z"></path>
+	  </symbol>
+	
+	  <symbol id="i-eye" viewBox="0 0 24 24">
+	  <path d="M12 9q1.219 0 2.109 0.891t0.891 2.109-0.891 2.109-2.109 0.891-2.109-0.891-0.891-2.109 0.891-2.109 2.109-0.891zM12 17.016q2.063 0 3.539-1.477t1.477-3.539-1.477-3.539-3.539-1.477-3.539 1.477-1.477 3.539 1.477 3.539 3.539 1.477zM12 4.5q3.703 0 6.703 2.063t4.313 5.438q-1.313 3.375-4.313 5.438t-6.703 2.063-6.703-2.063-4.313-5.438q1.313-3.375 4.313-5.438t6.703-2.063z"></path>
+	  </symbol>
+	
+	  <symbol id="i-down" viewBox="0 0 20 20">
+	  <path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path>
+	  </symbol>
+	
+	  <symbol id="i-hub" viewBox="0 0 24 24">
+	  <path d="M17.016 15.984h3.984v5.016h-5.016v-3.047l-3.984-4.219-3.984 4.219v3.047h-5.016v-5.016h3.984l4.031-3.984v-3.188q-0.891-0.328-1.453-1.078t-0.563-1.734q0-1.219 0.891-2.109t2.109-0.891 2.109 0.891 0.891 2.109q0 0.984-0.563 1.734t-1.453 1.078v3.188z"></path>
+	  </symbol>
+	
+	  <symbol id="i-task" viewBox="0 0 24 24">
+	  <path d="M18.174 1.826c-1.102-1.102-2.082-0.777-2.082-0.777l-8.639 8.632-1.453 4.319 4.317-1.454 8.634-8.638c0 0 0.324-0.98-0.777-2.082zM10.605 11.605l-0.471 0.47-1.473 0.5c-0.104-0.24-0.234-0.477-0.498-0.74s-0.5-0.394-0.74-0.498l0.5-1.473 0.471-0.47c0 0 0.776-0.089 1.537 0.673 0.762 0.761 0.674 1.538 0.674 1.538zM16 17h-13v-13h5l2-2h-7c-1.1 0-2 0.9-2 2v13c0 1.1 0.9 2 2 2h13c1.1 0 2-0.9 2-2v-7l-2 2v5z"></path>
+	  </symbol>
+	
+	  <symbol id="i-close" viewBox="0 0 20 20">
+	  <path d="M15.82 5.352l-4.648 4.648 4.648 4.648-1.172 1.172-4.648-4.648-4.648 4.648-1.172-1.172 4.648-4.648-4.648-4.648 1.172-1.172 4.648 4.648 4.648-4.648z"></path>
+	  </symbol>
+	
+	  <symbol id="i-west" viewBox="0 0 20 20">
+	  <path d="M12.452 4.516c0.446 0.436 0.481 1.043 0 1.576l-3.747 3.908 3.747 3.908c0.481 0.533 0.446 1.141 0 1.574-0.445 0.436-1.197 0.408-1.615 0-0.418-0.406-4.502-4.695-4.502-4.695-0.223-0.217-0.335-0.502-0.335-0.787s0.112-0.57 0.335-0.789c0 0 4.084-4.287 4.502-4.695s1.17-0.436 1.615 0z"></path>
+	  </symbol>
+	
+	  <symbol id="i-east" viewBox="0 0 20 20">
+	  <path d="M9.163 4.516c0.418 0.408 4.502 4.695 4.502 4.695 0.223 0.219 0.335 0.504 0.335 0.789s-0.112 0.57-0.335 0.787c0 0-4.084 4.289-4.502 4.695-0.418 0.408-1.17 0.436-1.615 0-0.446-0.434-0.481-1.041 0-1.574l3.747-3.908-3.747-3.908c-0.481-0.533-0.446-1.141 0-1.576s1.197-0.409 1.615 0z"></path>
+	  </symbol>
+	
+	  <symbol id="i-related" viewBox="0 0 32 32">
+	  <path d="M30.080 20h-1.6l-11.040-6.24v-1.28h2.080c0.8 0 1.44-0.64 1.44-1.28v-9.44c0-0.8-0.64-1.28-1.44-1.28h-7.2c-0.8 0-1.44 0.64-1.44 1.28v9.44c0 0.8 0.64 1.28 1.44 1.28h2.080v1.28l-11.36 6.24h-1.44c-0.8 0-1.44 0.64-1.44 1.28v9.12c0 0.8 0.64 1.28 1.44 1.28h7.36c0.8 0 1.44-0.64 1.44-1.28v-9.12c0-0.8-0.64-1.28-1.44-1.28h-1.28l8.16-4c0 0 0 0 0.16 0s0 0 0.16 0l8.16 4h-1.6c-0.8 0-1.44 0.64-1.44 1.28v9.12c0 0.8 0.64 1.28 1.44 1.28h7.36c0.8 0 1.44-0.64 1.44-1.28v-9.12c0.16-0.64-0.64-1.28-1.44-1.28z"></path>
+	  </symbol>
+	
+	  <symbol id="i-word" viewBox="0 0 20 20">
+	  <path d="M12.496 9.295h0.863l-0.996 4.418-1.295-6.211h-2.081l-1.506 6.211-1.129-6.211h-2.176l2.209 9.998h2.126l1.49-5.912 1.333 5.912h1.96l2.532-9.998h-3.329v1.794z"></path>
+	  <path d="M17.926 4.474c-0.434-0.592-1.039-1.283-1.703-1.947s-1.356-1.269-1.947-1.703c-1.007-0.739-1.496-0.824-1.776-0.824h-9.688c-0.862 0-1.563 0.701-1.563 1.563v16.875c0 0.862 0.701 1.563 1.563 1.563h14.375c0.862 0 1.563-0.701 1.563-1.563v-12.188c0-0.28-0.085-0.769-0.824-1.776v0zM15.339 3.411c0.6 0.6 1.070 1.141 1.418 1.589h-3.007v-3.007c0.449 0.347 0.99 0.818 1.589 1.417v0zM17.5 18.438c0 0.169-0.143 0.313-0.313 0.313h-14.375c-0.169 0-0.313-0.143-0.313-0.313v-16.875c0-0.169 0.143-0.313 0.313-0.313 0 0 9.687-0 9.688 0v4.375c0 0.345 0.28 0.625 0.625 0.625h4.375v12.188z"></path>
+	  </symbol>
+	
+	  <symbol id="i-pdf" viewBox="0 0 20 20">
+	    <path d="M16.446 11.513c-0.267-0.263-0.858-0.402-1.757-0.414-0.609-0.007-1.342 0.047-2.113 0.155-0.345-0.199-0.701-0.416-0.98-0.677-0.751-0.701-1.378-1.675-1.769-2.746 0.025-0.1 0.047-0.188 0.067-0.278 0 0 0.423-2.404 0.311-3.216-0.015-0.111-0.025-0.144-0.055-0.23l-0.037-0.094c-0.115-0.265-0.341-0.547-0.695-0.531l-0.213-0.007c-0.395 0-0.716 0.202-0.801 0.503-0.257 0.946 0.008 2.361 0.488 4.194l-0.123 0.299c-0.344 0.837-0.774 1.681-1.154 2.425l-0.049 0.097c-0.4 0.782-0.762 1.446-1.091 2.008l-0.339 0.179c-0.025 0.013-0.606 0.321-0.743 0.403-1.157 0.691-1.924 1.475-2.052 2.098-0.040 0.199-0.010 0.453 0.196 0.571l0.328 0.165c0.142 0.071 0.293 0.107 0.446 0.107 0.824 0 1.781-1.027 3.1-3.327 1.522-0.496 3.255-0.907 4.774-1.135 1.157 0.652 2.581 1.104 3.479 1.104 0.16 0 0.297-0.015 0.409-0.045 0.172-0.046 0.318-0.144 0.406-0.277 0.174-0.262 0.21-0.624 0.162-0.994-0.014-0.11-0.102-0.246-0.197-0.338zM4.134 15.899c0.15-0.411 0.745-1.224 1.625-1.944 0.055-0.045 0.192-0.173 0.316-0.291-0.92 1.467-1.536 2.052-1.941 2.236zM9.344 3.9c0.265 0 0.416 0.668 0.428 1.294s-0.134 1.066-0.316 1.391c-0.15-0.481-0.223-1.24-0.223-1.736 0 0-0.011-0.948 0.111-0.948v0zM7.79 12.451c0.185-0.33 0.377-0.679 0.573-1.048 0.478-0.905 0.78-1.612 1.005-2.194 0.447 0.814 1.005 1.506 1.66 2.061 0.082 0.069 0.168 0.139 0.259 0.208-1.332 0.264-2.484 0.584-3.497 0.974v0zM16.189 12.376c-0.081 0.051-0.314 0.080-0.463 0.080-0.483 0-1.080-0.221-1.917-0.579 0.322-0.024 0.616-0.036 0.881-0.036 0.484 0 0.627-0.002 1.101 0.119s0.479 0.366 0.398 0.417v0z"></path>
+	    <path d="M17.926 4.474c-0.434-0.592-1.039-1.283-1.703-1.947s-1.356-1.269-1.947-1.703c-1.007-0.739-1.496-0.824-1.776-0.824h-9.688c-0.862 0-1.563 0.701-1.563 1.563v16.875c0 0.862 0.701 1.563 1.563 1.563h14.375c0.862 0 1.563-0.701 1.563-1.563v-12.188c0-0.28-0.085-0.769-0.824-1.776v0zM15.339 3.411c0.6 0.6 1.070 1.141 1.418 1.589h-3.007v-3.007c0.449 0.347 0.99 0.818 1.589 1.417v0zM17.5 18.438c0 0.169-0.143 0.313-0.313 0.313h-14.375c-0.169 0-0.313-0.143-0.313-0.313v-16.875c0-0.169 0.143-0.313 0.313-0.313 0 0 9.687-0 9.688 0v4.375c0 0.345 0.28 0.625 0.625 0.625h4.375v12.188z"></path>
+	  </symbol>
+	</svg>
+	<!-- /fabricator icons -->
+	
+		<!-- fabricator icons -->
+		<svg style="display: none;">
+			<symbol id="f-icon-code" viewBox="0 0 512 512">
+				<path d="M377.3 121.3l-40.5 40.4 94.4 94.3-94.4 94.3 40.5 40.4L512 256zM134.7 121.3L0 256l134.7 134.7 40.5-40.4L80.8 256l94.4-94.3zM281.8 103.8zM230.183 408.16l-29.233-7.97 80.85-296.484 29.234 7.972z"/>
+			</symbol>
+			<symbol id="f-icon-notes" viewBox="0 0 512 512">
+				<path d="M443.8 0H68.2C30.6 0 0 30.5 0 68v264.2c0 16.6 8.9 29.5 25.9 37.5 15.3 7.2 33.1 8.4 40.1 8.5V512l201.6-134h176.1c37.6 0 68.2-30.3 68.2-67.8V68c.1-37.5-30.5-68-68.1-68zM114 438V330H68.2c-11.1 0-19.2-8.8-19.2-19.8V68c0-11 8.2-20 19.2-20h375.5c11.1 0 19.2 9 19.2 20v242.2c0 11-8.2 19.8-19.2 19.8H244.2L114 438z"/>
+			</symbol>
+			<symbol id="f-icon-labels" viewBox="0 0 512 512">
+				<path d="M304 280c0 13.2-10.8 24-24 24h-48c-13.2 0-24-10.8-24-24v-48c0-13.2 10.8-24 24-24h48c13.2 0 24 10.8 24 24v48zM464 280c0 13.2-10.8 24-24 24h-48c-13.2 0-24-10.8-24-24v-48c0-13.2 10.8-24 24-24h48c13.2 0 24 10.8 24 24v48zM144 280c0 13.2-10.8 24-24 24H72c-13.2 0-24-10.8-24-24v-48c0-13.2 10.8-24 24-24h48c13.2 0 24 10.8 24 24v48z"/>
+			</symbol>
+			<symbol id="f-icon-menu" viewBox="0 0 512 512">
+				<path d="M512 100c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12V76c0-6.6 5.4-12 12-12h488c6.6 0 12 5.4 12 12v24zM512 212c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12v-24c0-6.6 5.4-12 12-12h488c6.6 0 12 5.4 12 12v24zM512 324c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12v-24c0-6.6 5.4-12 12-12h488c6.6 0 12 5.4 12 12v24zM512 436c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12v-24c0-6.6 5.4-12 12-12h488c6.6 0 12 5.4 12 12v24z"/>
+			</symbol>
+			<symbol id="f-icon-settings" viewBox="0 0 512 512">
+				<path d="M256 377.3c-67.5 0-121.6-53.9-121.6-121.3s54-121.3 121.6-121.3S377.6 188.6 377.6 256 323.5 377.3 256 377.3zm0-215.6c-52.7 0-94.6 41.8-94.6 94.3s41.9 94.3 94.6 94.3 94.6-41.8 94.6-94.3-41.9-94.3-94.6-94.3zM293.2 512h-72.9L200 450c-13.5-4-27-9.4-39.2-16.2l-59.4 29.6L50 412.3 79.7 353c-6.8-12.1-12.2-25.6-16.2-39.1L0 292.4v-72.8l62.1-20.2c4.1-13.5 9.5-26.9 16.2-39.1L48.6 101 100 49.9l59.4 29.6c12.2-6.7 25.7-12.1 39.2-16.2L220.2 0h72.9l20.3 62c13.5 4 27 9.4 39.2 16.2L412 48.5l51.3 51.2-29.7 59.3c6.8 12.1 12.2 25.6 16.2 39.1l62.1 20.2V291l-62.1 20.2c-4.1 13.5-9.5 26.9-16.2 39.1l29.7 59.3-51.3 51.2-59.4-29.6c-12.2 6.7-25.7 12.1-39.2 16.2L293.2 512zm-54.1-26.9h35.1l18.9-57.9 6.8-1.3c16.2-4 31.1-10.8 45.9-18.9l6.8-4 54 26.9 24.3-24.3-27-53.9 4.1-6.7c8.1-13.5 14.9-29.6 18.9-45.8l1.4-6.7 58.1-18.9v-35l-58.1-18.9-1.4-6.7c-4.1-16.2-10.8-31-18.9-45.8l-4.1-6.7 27-53.9-24.3-24.3-54 26.9-6.8-4c-14.8-8.2-29.7-14.9-45.9-19l-6.8-1.3L274.2 27h-35.1l-18.9 57.9-6.8 1.3c-16.2 4-31.1 10.8-45.9 18.9l-6.8 4-54-26.9-24.3 24.3 27 53.9-4.1 6.7c-8.1 13.5-14.9 29.6-18.9 45.8l-1.4 6.7-58 18.9v35l58.1 18.9 1.4 6.7c4.1 16.2 10.8 31 18.9 45.8l4.1 6.7-27 53.9 24.3 24.3 54-26.9 6.8 4c14.9 8.1 29.7 14.8 45.9 18.9l6.8 1.3 18.8 58z"/>
+			</symbol>
+		
+			<symbol id="i-comment" viewBox="0 0 100 100">
+				<path d="M88.466,16.936c-0.172-1.703-1.592-3.036-3.34-3.036H14.781v0.009c-1.705,0.047-3.079,1.355-3.247,3.027H11.5v56.342h0.068
+				c0.305,1.512,1.622,2.65,3.214,2.694v0.009h11.564v6.744c0,1.864,1.51,3.374,3.374,3.374c1.165,0,2.192-0.591,2.798-1.49
+				l8.629-8.629h43.979c1.634,0,2.995-1.161,3.306-2.703H88.5V16.936H88.466z"/>
+			</symbol>
+		
+			<symbol id="i-arrow-right" viewBox="0 0 100 100">
+				<path d="M50.868,78.016l36.418-26.055c0.66-0.471,1.049-1.233,1.051-2.043c0-0.006,0-0.006,0-0.006
+				c-0.002-0.815-0.396-1.575-1.059-2.048L50.86,21.977c-0.767-0.546-1.776-0.616-2.612-0.183c-0.835,0.426-1.361,1.292-1.361,2.236
+				v12.183l-32.709-0.001c-1.39,0-2.515,1.125-2.515,2.516l0.001,22.541c-0.001,1.389,1.124,2.515,2.516,2.516l32.706,0v12.187
+				c0,0.94,0.53,1.803,1.366,2.237C49.089,78.641,50.1,78.567,50.868,78.016z"/>
+			</symbol>
+		
+			<symbol id="i-alert" viewBox="0 0 100 100">
+				<path d="M91.17,81.374l0.006-0.004l-0.139-0.24c-0.068-0.128-0.134-0.257-0.216-0.375l-37.69-65.283
+				c-0.611-1.109-1.776-1.87-3.133-1.87c-1.47,0-2.731,0.887-3.285,2.153l-0.004-0.002L9.312,80.529l0.036,0.021
+				c-0.505,0.618-0.82,1.397-0.82,2.257c0,1.982,1.607,3.59,3.588,3.59h0h75.767v0c1.982,0,3.589-1.607,3.589-3.589
+				C91.472,82.297,91.362,81.814,91.17,81.374z M50.035,79.617c-2.874,0-5.201-2.257-5.201-5.13c0-2.874,2.326-5.2,5.201-5.2
+				c2.803,0,5.13,2.325,5.13,5.2C55.166,77.36,52.838,79.617,50.035,79.617z M55.165,34.25v28.299h-0.002
+				c0,0.005,0.002,0.01,0.002,0.016c0,1.173-0.95,2.094-2.094,2.094c-0.005,0-0.009-0.001-0.014-0.001v0.001h-6.093
+				c-1.174,0-2.123-0.921-2.123-2.094c0-0.005,0.002-0.01,0.002-0.016h-0.002V34.326c-0.001-0.026-0.008-0.051-0.008-0.077
+				c0-1.117,0.865-1.996,1.935-2.078v-0.016h6.288v0.001c1.149,0.007,2.074,0.897,2.103,2.039h0.005v0.053V34.25
+				C55.166,34.25,55.165,34.25,55.165,34.25z"/>
+			</symbol>
+		
+			<symbol id="i-info" viewBox="0 0 20 20">
+				<path d="M10 0.4c-5.303 0-9.601 4.298-9.601 9.6 0 5.303 4.298 9.601 9.601 9.601 5.301 0 9.6-4.298 9.6-9.601s-4.299-9.6-9.6-9.6zM10.896 3.866c0.936 0 1.211 0.543 1.211 1.164 0 0.775-0.62 1.492-1.679 1.492-0.886 0-1.308-0.445-1.282-1.182 0-0.621 0.519-1.474 1.75-1.474zM8.498 15.75c-0.64 0-1.107-0.389-0.66-2.094l0.733-3.025c0.127-0.484 0.148-0.678 0-0.678-0.191 0-1.022 0.334-1.512 0.664l-0.319-0.523c1.555-1.299 3.343-2.061 4.108-2.061 0.64 0 0.746 0.756 0.427 1.92l-0.84 3.18c-0.149 0.562-0.085 0.756 0.064 0.756 0.192 0 0.82-0.232 1.438-0.719l0.362 0.486c-1.513 1.512-3.162 2.094-3.801 2.094z"></path>
+			</symbol>
+		
+			<symbol id="i-star" viewBox="0 0 20 20">
+				<path d="M10 1.3l2.388 6.722h6.412l-5.232 3.948 1.871 6.928-5.439-4.154-5.438 4.154 1.87-6.928-5.233-3.948h6.412l2.389-6.722z"></path>
+		</svg>
+			</symbol>
+		
+			<symbol id="i-list" viewBox="0 0 20 20">
+				<path d="M16.4 9h-12.8c-0.552 0-0.6 0.447-0.6 1s0.048 1 0.6 1h12.8c0.552 0 0.6-0.447 0.6-1s-0.048-1-0.6-1zM16.4 13h-12.8c-0.552 0-0.6 0.447-0.6 1s0.048 1 0.6 1h12.8c0.552 0 0.6-0.447 0.6-1s-0.048-1-0.6-1zM3.6 7h12.8c0.552 0 0.6-0.447 0.6-1s-0.048-1-0.6-1h-12.8c-0.552 0-0.6 0.447-0.6 1s0.048 1 0.6 1z"></path>
+			</symbol>
+		
+			<symbol id="i-x" viewBox="0 0 100 100">
+				<path d="M84.707,68.752L65.951,49.998l18.75-18.752c0.777-0.777,0.777-2.036,0-2.813L71.566,15.295
+				c-0.777-0.777-2.037-0.777-2.814,0L49.999,34.047l-18.75-18.752c-0.746-0.747-2.067-0.747-2.814,0L15.297,28.431
+				c-0.373,0.373-0.583,0.88-0.583,1.407c0,0.527,0.21,1.034,0.583,1.407L34.05,49.998L15.294,68.753
+				c-0.373,0.374-0.583,0.88-0.583,1.407c0,0.528,0.21,1.035,0.583,1.407l13.136,13.137c0.373,0.373,0.881,0.583,1.41,0.583
+				c0.525,0,1.031-0.21,1.404-0.583l18.755-18.755l18.756,18.754c0.389,0.388,0.896,0.583,1.407,0.583c0.511,0,1.019-0.195,1.408-0.583
+				l13.138-13.137C85.484,70.789,85.484,69.53,84.707,68.752z"/>
+			</symbol>
+		
+			<symbol id="i-clock" viewBox="0 0 100 100">
+			<g>
+				<path d="M50,22.44c15.198,0,27.56,12.367,27.56,27.562c0,15.197-12.362,27.559-27.56,27.559
+					c-15.199,0-27.561-12.362-27.561-27.559C22.439,34.806,34.801,22.44,50,22.44 M50,12.5c-20.712,0-37.5,16.792-37.5,37.502
+					C12.5,70.712,29.288,87.5,50,87.5c20.712,0,37.5-16.788,37.5-37.498C87.5,29.292,70.712,12.5,50,12.5L50,12.5z"/>
+			</g>
+			<path d="M69.195,36.068l-3.897-3.902c-0.743-0.747-2.077-0.729-2.791,0L50.022,44.654l-6.863-6.863
+				c-0.743-0.743-2.046-0.743-2.789,0l-3.892,3.893c-0.372,0.364-0.585,0.873-0.585,1.402c0,0.525,0.204,1.025,0.578,1.394
+				l12.133,12.133c0.374,0.374,0.869,0.578,1.396,0.578c0.027,0,0.051,0,0.078,0c0.517-0.009,1-0.213,1.364-0.578l17.754-17.754
+				C69.965,38.087,69.965,36.835,69.195,36.068z"/>
+			</symbol>	
+		</svg>
+		<!-- /fabricator icons -->
+		<!-- fabricator menu -->
+		<div class="f-menu">
+		
+			<div class="f-controls">
+				<div class="f-control f-global-control" data-f-toggle-control="labels" title="Toggle Labels">
+					<svg>
+						<use xlink:href="#f-icon-labels" />
+					</svg>
+				</div>
+				<div class="f-control f-global-control" data-f-toggle-control="notes" title="Toggle Notes">
+					<svg>
+						<use xlink:href="#f-icon-notes" />
+					</svg>
+				</div>
+				<div class="f-control f-global-control" data-f-toggle-control="code" title="Toggle Code">
+					<svg>
+						<use xlink:href="#f-icon-code" />
+					</svg>
+				</div>
+			</div>
+		
+			<ul>
+		
+				<li>
+					<a href="index.html" class="f-menu__heading">Overview</a>
+				</li>
+		
+				<li>
+					<a href="atoms.html" class="f-menu__heading">Atoms</a>
+					<ul>
+						<li>
+							<a href="atoms.html#buttons">Buttons</a>
+						</li>
+						<li>
+							<a href="atoms.html#checkbox">Checkbox</a>
+						</li>
+						<li>
+							<a href="atoms.html#close">Close</a>
+						</li>
+						<li>
+							<a href="atoms.html#close--bright">Close  Bright</a>
+						</li>
+						<li>
+							<a href="atoms.html#dropdown">Dropdown</a>
+						</li>
+						<li>
+							<a href="atoms.html#icon-down">Icon Down</a>
+						</li>
+						<li>
+							<a href="atoms.html#icon-follow">Icon Follow</a>
+						</li>
+						<li>
+							<a href="atoms.html#icon-follow--right">Icon Follow  Right</a>
+						</li>
+						<li>
+							<a href="atoms.html#icon-search">Icon Search</a>
+						</li>
+						<li>
+							<a href="atoms.html#item-favorite">Item Favorite</a>
+						</li>
+						<li>
+							<a href="atoms.html#item-icon">Item Icon</a>
+						</li>
+						<li>
+							<a href="atoms.html#item-icon--task">Item Icon  Task</a>
+						</li>
+						<li>
+							<a href="atoms.html#item-initials">Item Initials</a>
+						</li>
+						<li>
+							<a href="atoms.html#item-properties">Item Properties</a>
+						</li>
+						<li>
+							<a href="atoms.html#lists">Lists</a>
+						</li>
+						<li>
+							<a href="atoms.html#nav-activity">Nav Activity</a>
+						</li>
+						<li>
+							<a href="atoms.html#nav-west">Nav West</a>
+						</li>
+						<li>
+							<a href="atoms.html#nav-west--rgba">Nav West  Rgba</a>
+						</li>
+						<li>
+							<a href="atoms.html#pagination">Pagination</a>
+						</li>
+						<li>
+							<a href="atoms.html#paragraph">Paragraph</a>
+						</li>
+						<li>
+							<a href="atoms.html#radio">Radio</a>
+						</li>
+						<li>
+							<a href="atoms.html#select">Select</a>
+						</li>
+						<li>
+							<a href="atoms.html#svg">Svg</a>
+						</li>
+						<li>
+							<a href="atoms.html#table">Table</a>
+						</li>
+						<li>
+							<a href="atoms.html#text-input">Text Input</a>
+						</li>
+						<li>
+							<a href="atoms.html#textarea">Textarea</a>
+						</li>
+						<li>
+							<a href="atoms.html#tool">Tool</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="molecules.html" class="f-menu__heading">Molecules</a>
+					<ul>
+						<li>
+							<a href="molecules.html#doc-actions">Doc Actions</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside">Doc Aside</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--application">Doc Aside  Application</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--classification">Doc Aside  Classification</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--classification-spec">Doc Aside  Classification Spec</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--classification-study">Doc Aside  Classification Study</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--document">Doc Aside  Document</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--general">Doc Aside  General</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--process">Doc Aside  Process</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--product">Doc Aside  Product</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--study">Doc Aside  Study</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--substance">Doc Aside  Substance</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--tags">Doc Aside  Tags</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--tracability-spec">Doc Aside  Tracability Spec</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--tracability-study">Doc Aside  Tracability Study</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--viewed">Doc Aside  Viewed</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside-brief">Doc Aside Brief</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-header">Doc Header</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-header--for-approval">Doc Header  For Approval</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-header-actions">Doc Header Actions</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-header-actions-flat">Doc Header Actions Flat</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-list-header">Doc List Header</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-list-header--search">Doc List Header  Search</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-object">Doc Object</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-tools">Doc Tools</a>
+						</li>
+						<li>
+							<a href="molecules.html#header-top">Header Top</a>
+						</li>
+						<li>
+							<a href="molecules.html#list-content-types">List Content Types</a>
+						</li>
+						<li>
+							<a href="molecules.html#nav-aside-list">Nav Aside List</a>
+						</li>
+						<li>
+							<a href="molecules.html#panel-content">Panel Content</a>
+						</li>
+						<li>
+							<a href="molecules.html#panel-list">Panel List</a>
+						</li>
+						<li>
+							<a href="molecules.html#people-list-header">People List Header</a>
+						</li>
+						<li>
+							<a href="molecules.html#profile-header-actions-flat">Profile Header Actions Flat</a>
+						</li>
+						<li>
+							<a href="molecules.html#search-aside-list">Search Aside List</a>
+						</li>
+						<li>
+							<a href="molecules.html#search-aside-tags">Search Aside Tags</a>
+						</li>
+						<li>
+							<a href="molecules.html#search-typeahead">Search Typeahead</a>
+						</li>
+						<li>
+							<a href="molecules.html#tabs">Tabs</a>
+						</li>
+						<li>
+							<a href="molecules.html#task-actions">Task Actions</a>
+						</li>
+						<li>
+							<a href="molecules.html#task-approve">Task Approve</a>
+						</li>
+						<li>
+							<a href="molecules.html#task-attachment">Task Attachment</a>
+						</li>
+						<li>
+							<a href="molecules.html#task-header">Task Header</a>
+						</li>
+						<li>
+							<a href="molecules.html#task-header--rejected">Task Header  Rejected</a>
+						</li>
+						<li>
+							<a href="molecules.html#task-header--success">Task Header  Success</a>
+						</li>
+						<li>
+							<a href="molecules.html#task-list-header">Task List Header</a>
+						</li>
+						<li>
+							<a href="molecules.html#task-reference">Task Reference</a>
+						</li>
+						<li>
+							<a href="molecules.html#task-tools">Task Tools</a>
+						</li>
+						<li>
+							<a href="molecules.html#timeline-header">Timeline Header</a>
+						</li>
+						<li>
+							<a href="molecules.html#timeline-header--revised">Timeline Header  Revised</a>
+						</li>
+						<li>
+							<a href="molecules.html#timeline-header-activity">Timeline Header Activity</a>
+						</li>
+						<li>
+							<a href="molecules.html#timeline-header-activity-user">Timeline Header Activity User</a>
+						</li>
+						<li>
+							<a href="molecules.html#timeline-header-notification">Timeline Header Notification</a>
+						</li>
+						<li>
+							<a href="molecules.html#timeline-header-notification--revised">Timeline Header Notification  Revised</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="organisms.html" class="f-menu__heading">Organisms</a>
+					<ul>
+						<li>
+							<a href="organisms.html#doc-filters">Doc Filters</a>
+						</li>
+						<li>
+							<a href="organisms.html#doc-header--approve">Doc Header  Approve</a>
+						</li>
+						<li>
+							<a href="organisms.html#doc-header--draft">Doc Header  Draft</a>
+						</li>
+						<li>
+							<a href="organisms.html#doc-header--effective">Doc Header  Effective</a>
+						</li>
+						<li>
+							<a href="organisms.html#doc-header--review">Doc Header  Review</a>
+						</li>
+						<li>
+							<a href="organisms.html#doc-list">Doc List</a>
+						</li>
+						<li>
+							<a href="organisms.html#modal-approve">Modal Approve</a>
+						</li>
+						<li>
+							<a href="organisms.html#modal-dropdown">Modal Dropdown</a>
+						</li>
+						<li>
+							<a href="organisms.html#modal-related">Modal Related</a>
+						</li>
+						<li>
+							<a href="organisms.html#modal-search">Modal Search</a>
+						</li>
+						<li>
+							<a href="organisms.html#modal-sort">Modal Sort</a>
+						</li>
+						<li>
+							<a href="organisms.html#nav-aside">Nav Aside</a>
+						</li>
+						<li>
+							<a href="organisms.html#panel-approve">Panel Approve</a>
+						</li>
+						<li>
+							<a href="organisms.html#panel-content-types">Panel Content Types</a>
+						</li>
+						<li>
+							<a href="organisms.html#panel-history">Panel History</a>
+						</li>
+						<li>
+							<a href="organisms.html#panel-more">Panel More</a>
+						</li>
+						<li>
+							<a href="organisms.html#panel-notification">Panel Notification</a>
+						</li>
+						<li>
+							<a href="organisms.html#panel-properties">Panel Properties</a>
+						</li>
+						<li>
+							<a href="organisms.html#people-filters">People Filters</a>
+						</li>
+						<li>
+							<a href="organisms.html#people-list">People List</a>
+						</li>
+						<li>
+							<a href="organisms.html#profile-filters">Profile Filters</a>
+						</li>
+						<li>
+							<a href="organisms.html#profile-header">Profile Header</a>
+						</li>
+						<li>
+							<a href="organisms.html#profile-header--following">Profile Header  Following</a>
+						</li>
+						<li>
+							<a href="organisms.html#search-aside">Search Aside</a>
+						</li>
+						<li>
+							<a href="organisms.html#search-form">Search Form</a>
+						</li>
+						<li>
+							<a href="organisms.html#tab-bar">Tab Bar</a>
+						</li>
+						<li>
+							<a href="organisms.html#tab-bar-activity">Tab Bar Activity</a>
+						</li>
+						<li>
+							<a href="organisms.html#tab-bar-docs">Tab Bar Docs</a>
+						</li>
+						<li>
+							<a href="organisms.html#tab-bar-people">Tab Bar People</a>
+						</li>
+						<li>
+							<a href="organisms.html#tab-bar-transparent">Tab Bar Transparent</a>
+						</li>
+						<li>
+							<a href="organisms.html#task">Task</a>
+						</li>
+						<li>
+							<a href="organisms.html#task-filters">Task Filters</a>
+						</li>
+						<li>
+							<a href="organisms.html#task-header--approve">Task Header  Approve</a>
+						</li>
+						<li>
+							<a href="organisms.html#task-header--editing">Task Header  Editing</a>
+						</li>
+						<li>
+							<a href="organisms.html#task-header--review">Task Header  Review</a>
+						</li>
+						<li>
+							<a href="organisms.html#task-header--testing">Task Header  Testing</a>
+						</li>
+						<li>
+							<a href="organisms.html#task-list">Task List</a>
+						</li>
+						<li>
+							<a href="organisms.html#task-modal">Task Modal</a>
+						</li>
+						<li>
+							<a href="organisms.html#task-reveal">Task Reveal</a>
+						</li>
+						<li>
+							<a href="organisms.html#timeline-list">Timeline List</a>
+						</li>
+						<li>
+							<a href="organisms.html#timeline-list-activity">Timeline List Activity</a>
+						</li>
+						<li>
+							<a href="organisms.html#top-bar">Top Bar</a>
+						</li>
+						<li>
+							<a href="organisms.html#top-bar-header">Top Bar Header</a>
+						</li>
+					</ul>
+				</li>
+		
+				<li>
+					<a href="pages.html" class="f-menu__heading">Pages</a>
+					<ul>
+						<li>
+							<a href="pages/activity-timeline.html">Activity Timeline</a>
+						</li>
+						<li>
+							<a href="pages/doc--task.html">Doc  Task</a>
+						</li>
+						<li>
+							<a href="pages/doc-approve.html">Doc Approve</a>
+						</li>
+						<li>
+							<a href="pages/doc-landing.html">Doc Landing</a>
+						</li>
+						<li>
+							<a href="pages/doc-preview--clinical-study.html">Doc Preview  Clinical Study</a>
+						</li>
+						<li>
+							<a href="pages/doc-preview--history.html">Doc Preview  History</a>
+						</li>
+						<li>
+							<a href="pages/doc-preview--specification.html">Doc Preview  Specification</a>
+						</li>
+						<li>
+							<a href="pages/doc-preview-slide--smooth-alt.html">Doc Preview Slide  Smooth Alt</a>
+						</li>
+						<li>
+							<a href="pages/doc-preview-slide--smooth.html">Doc Preview Slide  Smooth</a>
+						</li>
+						<li>
+							<a href="pages/doc-preview-slide.html">Doc Preview Slide</a>
+						</li>
+						<li>
+							<a href="pages/doc-preview-smooth.html">Doc Preview Smooth</a>
+						</li>
+						<li>
+							<a href="pages/doc-preview-tablet.html">Doc Preview Tablet</a>
+						</li>
+						<li>
+							<a href="pages/doc-preview.html">Doc Preview</a>
+						</li>
+						<li>
+							<a href="pages/doc.html">Doc</a>
+						</li>
+						<li>
+							<a href="pages/people-landing.html">People Landing</a>
+						</li>
+						<li>
+							<a href="pages/profile-landing-tablet.html">Profile Landing Tablet</a>
+						</li>
+						<li>
+							<a href="pages/profile-landing.html">Profile Landing</a>
+						</li>
+						<li>
+							<a href="pages/search-landing.html">Search Landing</a>
+						</li>
+						<li>
+							<a href="pages/task-inbox.html">Task Inbox</a>
+						</li>
+						<li>
+							<a href="pages/task-single.html">Task Single</a>
+						</li>
+					</ul>
+				</li>
+		
+				<li>
+					<a href="docs.html" class="f-menu__heading">Docs</a>
+					<ul>
+						<li>
+							<a href="docs.html#javascript">Javascript</a>
+						</li>
+					</ul>
+				</li>
+		
+			</ul>
+		
+		
+		</div>
+		<!-- /fabricator menu -->
+		<div class="f-container">
+			<div class="f-control-bar">
+				<div class="f-control f-menu-toggle">
+					<svg>
+						<use xlink:href="#f-icon-menu" />
+					</svg>
+				</div>
+			</div>
+
+	
+<h1 data-f-toggle="labels">Molecules</h1>
+
+
+<div class="f-item-group" id="doc-actions">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Actions</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<section class="doc-actions">
+    <ul class="button-group even-2">
+        <li>
+            <a href="#" class="button alert ui-icon">
+                <svg class="i-bright">
+                    <use xlink:href="#i-reject" />
+                </svg>
+                Reject
+            </a>
+        </li>
+        <li>
+            <a href="#" class="button success ui-icon">
+                <svg class="i-bright">
+                    <use xlink:href="#i-check" />
+                </svg>
+                Approve
+            </a>
+        </li>
+    </ul>
+</section>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;section class=&quot;doc-actions&quot;&gt;
+    &lt;ul class=&quot;button-group even-2&quot;&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;button alert ui-icon&quot;&gt;
+                &lt;svg class=&quot;i-bright&quot;&gt;
+                    &lt;use xlink:href=&quot;#i-reject&quot; /&gt;
+                &lt;/svg&gt;
+                Reject
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;button success ui-icon&quot;&gt;
+                &lt;svg class=&quot;i-bright&quot;&gt;
+                    &lt;use xlink:href=&quot;#i-check&quot; /&gt;
+                &lt;/svg&gt;
+                Approve
+            &lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/section&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-aside">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Aside</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<aside class="doc-aside padding border-bottom">
+    <ul class="small-block-grid-2 aside-emphasis">
+        <li>
+            <p class="no-margin c-steel">Modified on</p>
+            <p class="no-margin">April 23 2013, 11:46:08</p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">Modified by</p>
+            <p class="no-margin">Susan B</p>
+        </li>
+    </ul>
+
+    <ul class="small-block-grid-2">
+        <li>
+            <p class="no-margin c-steel">Created on</p>
+            <p class="no-margin">May 23 2014, 11:46:08</p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">Created by</p>
+            <p class="no-margin">Dominic R</p>
+        </li>
+    </ul>
+</aside>
+
+<aside class="doc-aside padding border-bottom">
+    <ul class="small-block-grid-2">
+        <li>
+            <p class="no-margin c-steel">
+                Product
+            </p>
+            <p class="no-margin">
+                Ibuprofen
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Study Number
+            </p>
+            <p class="no-margin">
+                000001152
+            </p>
+        </li>
+    </ul>
+    <!--   <p class="no-margin c-steel">Version</p>
+  <p>1.1, CURRENT</p> -->
+</aside>
+
+<aside class="doc-aside padding border-bottom bg-oil">
+    <a href="" class="a-white">
+		Advanced Properties 
+		<span class="ui-icon right"><svg class="i-bright"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-down"></use></svg></span>
+	</a>
+</aside>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;aside class=&quot;doc-aside padding border-bottom&quot;&gt;
+    &lt;ul class=&quot;small-block-grid-2 aside-emphasis&quot;&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;Modified on&lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;April 23 2013, 11:46:08&lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;Modified by&lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;Susan B&lt;/p&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;ul class=&quot;small-block-grid-2&quot;&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;Created on&lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;May 23 2014, 11:46:08&lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;Created by&lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;Dominic R&lt;/p&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;
+
+&lt;aside class=&quot;doc-aside padding border-bottom&quot;&gt;
+    &lt;ul class=&quot;small-block-grid-2&quot;&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Product
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Ibuprofen
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Study Number
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                000001152
+            &lt;/p&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;!--   &lt;p class=&quot;no-margin c-steel&quot;&gt;Version&lt;/p&gt;
+  &lt;p&gt;1.1, CURRENT&lt;/p&gt; --&gt;
+&lt;/aside&gt;
+
+&lt;aside class=&quot;doc-aside padding border-bottom bg-oil&quot;&gt;
+    &lt;a href=&quot;&quot; class=&quot;a-white&quot;&gt;
+		Advanced Properties 
+		&lt;span class=&quot;ui-icon right&quot;&gt;&lt;svg class=&quot;i-bright&quot;&gt;&lt;use xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xlink:href=&quot;#i-down&quot;&gt;&lt;/use&gt;&lt;/svg&gt;&lt;/span&gt;
+	&lt;/a&gt;
+&lt;/aside&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-aside--application">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Aside  Application</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<aside class="doc-aside padding border-bottom ng-scope">
+    <h3 class="t-normal tiny c-oil">
+    Application
+  </h3>
+
+    <ul class="small-block-grid-1">
+        <li>
+            <p class="no-margin c-steel">
+                Title
+            </p>
+            <p class="no-margin">
+                Clinical Study Report Body Study, 05-20-2003
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Application Descripion
+            </p>
+            <p class="no-margin">
+                Placebo concurrent control
+            </p>
+        </li>
+    </ul>
+    <ul class="small-block-grid-2">
+        <li>
+            <p class="no-margin c-steel">
+                Submission Type
+            </p>
+            <p class="no-margin">
+                Placebo
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Submission Number
+            </p>
+            <p class="no-margin">
+                0000321
+            </p>
+        </li>
+    </ul>
+</aside>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;aside class=&quot;doc-aside padding border-bottom ng-scope&quot;&gt;
+    &lt;h3 class=&quot;t-normal tiny c-oil&quot;&gt;
+    Application
+  &lt;/h3&gt;
+
+    &lt;ul class=&quot;small-block-grid-1&quot;&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Title
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Clinical Study Report Body Study, 05-20-2003
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Application Descripion
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Placebo concurrent control
+            &lt;/p&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ul class=&quot;small-block-grid-2&quot;&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Submission Type
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Placebo
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Submission Number
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                0000321
+            &lt;/p&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-aside--classification">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Aside  Classification</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<aside class="doc-aside padding border-bottom ng-scope">
+    <h3 class="t-normal tiny c-oil">
+    Classification
+  </h3>
+    <ul class="small-block-grid-2">
+        <li>
+            <p class="no-margin c-steel">
+                Product Code
+            </p>
+            <p class="no-margin">
+                IBU3
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Clinical Trial Idenitifier
+            </p>
+            <p class="no-margin">
+                05-20-2003
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Group
+            </p>
+            <p class="no-margin">
+                Efficancy and Saftely
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Artifact Name
+            </p>
+            <p class="no-margin">
+                Report body
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Sub Group
+            </p>
+            <p class="no-margin">
+                Controlled Clinical Studies artinent to the claimed indication
+            </p>
+        </li>
+    </ul>
+</aside>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;aside class=&quot;doc-aside padding border-bottom ng-scope&quot;&gt;
+    &lt;h3 class=&quot;t-normal tiny c-oil&quot;&gt;
+    Classification
+  &lt;/h3&gt;
+    &lt;ul class=&quot;small-block-grid-2&quot;&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Product Code
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                IBU3
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Clinical Trial Idenitifier
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                05-20-2003
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Group
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Efficancy and Saftely
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Artifact Name
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Report body
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Sub Group
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Controlled Clinical Studies artinent to the claimed indication
+            &lt;/p&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-aside--classification-spec">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Aside  Classification Spec</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<aside class="doc-aside padding border-bottom ng-scope">
+    <ul class="small-block-grid-2">
+        <li>
+            <p class="no-margin c-steel">
+                Name
+            </p>
+            <p class="no-margin">
+                SPE-0000001042
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Title
+            </p>
+            <p class="no-margin">
+                Ibuprofen Specification 200mg
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Application Site
+            </p>
+            <p class="no-margin">
+                Dublin
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Applicable Areas
+            </p>
+            <p class="no-margin">
+                CMC, Production, Quality Control
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Responsibility
+            </p>
+            <p class="no-margin">
+                dublin_author1
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Group
+            </p>
+            <p class="no-margin">
+                Specification
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Subgroup
+            </p>
+            <p class="no-margin">
+                Specification - Substance
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Artifact Name
+            </p>
+            <p class="no-margin">
+                Drug Substance Specification
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Training Required
+            </p>
+            <p class="no-margin">
+                Yes
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Language
+            </p>
+            <p class="no-margin">
+                English
+            </p>
+        </li>
+    </ul>
+</aside>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;aside class=&quot;doc-aside padding border-bottom ng-scope&quot;&gt;
+    &lt;ul class=&quot;small-block-grid-2&quot;&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Name
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                SPE-0000001042
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Title
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Ibuprofen Specification 200mg
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Application Site
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Dublin
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Applicable Areas
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                CMC, Production, Quality Control
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Responsibility
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                dublin_author1
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Group
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Specification
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Subgroup
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Specification - Substance
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Artifact Name
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Drug Substance Specification
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Training Required
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Yes
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Language
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                English
+            &lt;/p&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-aside--classification-study">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Aside  Classification Study</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<aside class="doc-aside padding border-bottom ng-scope">
+    <h3 class="t-normal tiny c-oil">
+    Classification
+  </h3>
+    <ul class="small-block-grid-2">
+        <li>
+            <p class="no-margin c-steel">
+                Name
+            </p>
+            <p class="no-margin">
+                SPE-0000001042
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Title
+            </p>
+            <p class="no-margin">
+                Ibuprofen Specification 200mg
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Application Site
+            </p>
+            <p class="no-margin">
+                Dublin
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Applicable Areas
+            </p>
+            <p class="no-margin">
+                <span class="label radius bg-iron">CMC</span> <span class="label radius bg-iron">Production</span> <span class="label radius bg-iron">Quality Control</span>
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Responsibility
+            </p>
+            <p class="no-margin">
+                dublin_author1
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Group
+            </p>
+            <p class="no-margin">
+                Specification
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Subgroup
+            </p>
+            <p class="no-margin">
+                Specification - Substance
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Artifact Name
+            </p>
+            <p class="no-margin">
+                Drug Substance Specification
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Training Required
+            </p>
+            <p class="no-margin">
+                Yes
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Language
+            </p>
+            <p class="no-margin">
+                English
+            </p>
+        </li>
+    </ul>
+</aside>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;aside class=&quot;doc-aside padding border-bottom ng-scope&quot;&gt;
+    &lt;h3 class=&quot;t-normal tiny c-oil&quot;&gt;
+    Classification
+  &lt;/h3&gt;
+    &lt;ul class=&quot;small-block-grid-2&quot;&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Name
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                SPE-0000001042
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Title
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Ibuprofen Specification 200mg
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Application Site
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Dublin
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Applicable Areas
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                &lt;span class=&quot;label radius bg-iron&quot;&gt;CMC&lt;/span&gt; &lt;span class=&quot;label radius bg-iron&quot;&gt;Production&lt;/span&gt; &lt;span class=&quot;label radius bg-iron&quot;&gt;Quality Control&lt;/span&gt;
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Responsibility
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                dublin_author1
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Group
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Specification
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Subgroup
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Specification - Substance
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Artifact Name
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Drug Substance Specification
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Training Required
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Yes
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Language
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                English
+            &lt;/p&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-aside--document">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Aside  Document</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<aside class="doc-aside padding border-bottom ng-scope">
+    <h3 class="t-normal tiny c-oil">
+    Document Info
+  </h3>
+    <ul class="small-block-grid-2">
+        <li>
+            <p class="no-margin c-steel">
+                Document ID
+            </p>
+            <p class="no-margin">
+                000001152
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Type
+            </p>
+            <p class="no-margin">
+                cd_clinical
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Version Label
+            </p>
+            <p class="no-margin">
+                0.1, Current
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Owner Name
+            </p>
+            <p class="no-margin">
+                admingroup
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Format
+            </p>
+            <p class="no-margin">
+                msw8
+            </p>
+        </li>
+    </ul>
+</aside>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;aside class=&quot;doc-aside padding border-bottom ng-scope&quot;&gt;
+    &lt;h3 class=&quot;t-normal tiny c-oil&quot;&gt;
+    Document Info
+  &lt;/h3&gt;
+    &lt;ul class=&quot;small-block-grid-2&quot;&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Document ID
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                000001152
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Type
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                cd_clinical
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Version Label
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                0.1, Current
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Owner Name
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                admingroup
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Format
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                msw8
+            &lt;/p&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-aside--general">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Aside  General</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<aside class="doc-aside padding border-bottom">
+    <ul class="small-block-grid-2">
+        <li>
+            <p class="no-margin c-steel">Type</p>
+            <p class="no-margin">Procedure</p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">Category</p>
+            <p class="no-margin">Health</p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">Zone</p>
+            <p class="no-margin">Europe</p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">Country</p>
+            <p class="no-margin">France</p>
+        </li>
+    </ul>
+</aside>
+
+<aside class="doc-aside padding border-bottom">
+    <p class="no-margin">Language</p>
+    <p class="c-steel">Procedure</p>
+</aside>
+
+<aside class="doc-aside padding border-bottom">
+    <p class="no-margin">Transmitter Site</p>
+    <p class="c-steel">New York</p>
+</aside>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;aside class=&quot;doc-aside padding border-bottom&quot;&gt;
+    &lt;ul class=&quot;small-block-grid-2&quot;&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;Type&lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;Procedure&lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;Category&lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;Health&lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;Zone&lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;Europe&lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;Country&lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;France&lt;/p&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;
+
+&lt;aside class=&quot;doc-aside padding border-bottom&quot;&gt;
+    &lt;p class=&quot;no-margin&quot;&gt;Language&lt;/p&gt;
+    &lt;p class=&quot;c-steel&quot;&gt;Procedure&lt;/p&gt;
+&lt;/aside&gt;
+
+&lt;aside class=&quot;doc-aside padding border-bottom&quot;&gt;
+    &lt;p class=&quot;no-margin&quot;&gt;Transmitter Site&lt;/p&gt;
+    &lt;p class=&quot;c-steel&quot;&gt;New York&lt;/p&gt;
+&lt;/aside&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-aside--process">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Aside  Process</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<aside class="doc-aside padding border-bottom ng-scope">
+    <h3 class="t-normal tiny c-oil">
+    Process Info
+  </h3>
+    <ul class="small-block-grid-2">
+        <li>
+            <p class="no-margin c-steel">
+                Category
+            </p>
+            <p class="no-margin">
+                1
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Review Notification Recipients
+            </p>
+            <p class="no-margin">
+                cd_dublin_coordinators
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Docoument Status
+            </p>
+            <p class="no-margin">
+                Draft
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Sent for Review/Approbal
+            </p>
+            <p class="no-margin">
+                Aug 15th 2015
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Next Periodic Review Date
+            </p>
+            <p class="no-margin">
+                Sep 15th 2016
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Last Periodic Review Date
+            </p>
+            <p class="no-margin">
+                Sep 15th 2013
+            </p>
+        </li>
+    </ul>
+</aside>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;aside class=&quot;doc-aside padding border-bottom ng-scope&quot;&gt;
+    &lt;h3 class=&quot;t-normal tiny c-oil&quot;&gt;
+    Process Info
+  &lt;/h3&gt;
+    &lt;ul class=&quot;small-block-grid-2&quot;&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Category
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                1
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Review Notification Recipients
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                cd_dublin_coordinators
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Docoument Status
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Draft
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Sent for Review/Approbal
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Aug 15th 2015
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Next Periodic Review Date
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Sep 15th 2016
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Last Periodic Review Date
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Sep 15th 2013
+            &lt;/p&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-aside--product">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Aside  Product</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<aside class="doc-aside padding border-bottom ng-scope">
+    <h3 class="t-normal tiny c-oil">
+    Product Info  
+  </h3>
+    <ul class="small-block-grid-1">
+        <li>
+            <p class="no-margin c-steel">
+                Generic Name
+            </p>
+            <p class="no-margin">
+                Ibuprofen
+            </p>
+        </li>
+    </ul>
+    <ul class="small-block-grid-2">
+        <li>
+            <p class="no-margin c-steel">
+                Trade Name
+            </p>
+            <p class="no-margin">
+                Advial
+            </p>
+            <p class="no-margin">
+                Algifor
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Product Trade Country
+            </p>
+            <p class="no-margin">
+                United States of America
+            </p>
+            <p class="no-margin">
+                Switzerland
+            </p>
+        </li>
+    </ul>
+</aside>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;aside class=&quot;doc-aside padding border-bottom ng-scope&quot;&gt;
+    &lt;h3 class=&quot;t-normal tiny c-oil&quot;&gt;
+    Product Info  
+  &lt;/h3&gt;
+    &lt;ul class=&quot;small-block-grid-1&quot;&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Generic Name
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Ibuprofen
+            &lt;/p&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;ul class=&quot;small-block-grid-2&quot;&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Trade Name
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Advial
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Algifor
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Product Trade Country
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                United States of America
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Switzerland
+            &lt;/p&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-aside--study">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Aside  Study</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<aside class="doc-aside padding border-bottom ng-scope">
+    <h3 class="t-normal tiny c-oil">
+    Clinical Study Information
+  </h3>
+    <ul class="small-block-grid-2">
+        <li>
+            <p class="no-margin c-steel">
+                Study Phase
+            </p>
+            <p class="no-margin">
+                Phase III
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Project Name
+            </p>
+            <p class="no-margin">
+                2090mg Tablet
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Type of Control
+            </p>
+            <p class="no-margin">
+                Placebo concurrent control
+            </p>
+        </li>
+    </ul>
+</aside>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;aside class=&quot;doc-aside padding border-bottom ng-scope&quot;&gt;
+    &lt;h3 class=&quot;t-normal tiny c-oil&quot;&gt;
+    Clinical Study Information
+  &lt;/h3&gt;
+    &lt;ul class=&quot;small-block-grid-2&quot;&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Study Phase
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Phase III
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Project Name
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                2090mg Tablet
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Type of Control
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Placebo concurrent control
+            &lt;/p&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-aside--substance">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Aside  Substance</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<aside class="doc-aside padding border-bottom ng-scope">
+    <h3 class="t-normal tiny c-oil">
+    Drug Substance
+  </h3>
+    <ul class="small-block-grid-2">
+        <li>
+            <p class="no-margin c-steel">
+                Drug Substance Name
+            </p>
+            <p class="no-margin">
+                Ibuprofen
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Substance Code
+            </p>
+            <p class="no-margin">
+                sub 00010
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Manufacturer
+            </p>
+            <p class="no-margin">
+                DS Manufacturer 3
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Packaging Component
+            </p>
+            <p class="no-margin">
+                Capsule
+            </p>
+        </li>
+    </ul>
+</aside>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;aside class=&quot;doc-aside padding border-bottom ng-scope&quot;&gt;
+    &lt;h3 class=&quot;t-normal tiny c-oil&quot;&gt;
+    Drug Substance
+  &lt;/h3&gt;
+    &lt;ul class=&quot;small-block-grid-2&quot;&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Drug Substance Name
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Ibuprofen
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Substance Code
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                sub 00010
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Manufacturer
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                DS Manufacturer 3
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Packaging Component
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Capsule
+            &lt;/p&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-aside--tags">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Aside  Tags</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<aside class="doc-aside padding border-bottom">
+    <h3 class="micro t-normal">Tags</h3>
+    <ul class="tag-list">
+        <li><span class="label radius">Hydo Chloride</span></li>
+        <li><span class="label radius">Depression</span></li>
+        <li><span class="label radius">Medication</span></li>
+    </ul>
+    </ul>
+</aside>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;aside class=&quot;doc-aside padding border-bottom&quot;&gt;
+    &lt;h3 class=&quot;micro t-normal&quot;&gt;Tags&lt;/h3&gt;
+    &lt;ul class=&quot;tag-list&quot;&gt;
+        &lt;li&gt;&lt;span class=&quot;label radius&quot;&gt;Hydo Chloride&lt;/span&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;span class=&quot;label radius&quot;&gt;Depression&lt;/span&gt;&lt;/li&gt;
+        &lt;li&gt;&lt;span class=&quot;label radius&quot;&gt;Medication&lt;/span&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-aside--tracability-spec">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Aside  Tracability Spec</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<aside class="doc-aside padding border-bottom ng-scope">
+    <ul class="small-block-grid-2">
+        <li>
+            <p class="no-margin c-steel">
+                Source Document
+            </p>
+            <p class="no-margin">
+                Specification - Drug Substance
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Source Document Number
+            </p>
+            <p class="no-margin">
+                1.0
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Notification List
+            </p>
+            <p class="no-margin">
+                cd_dublin_coordinators
+            </p>
+        </li>
+    </ul>
+</aside>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;aside class=&quot;doc-aside padding border-bottom ng-scope&quot;&gt;
+    &lt;ul class=&quot;small-block-grid-2&quot;&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Source Document
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Specification - Drug Substance
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Source Document Number
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                1.0
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Notification List
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                cd_dublin_coordinators
+            &lt;/p&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-aside--tracability-study">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Aside  Tracability Study</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<aside class="doc-aside padding border-bottom ng-scope">
+    <h3 class="t-normal tiny c-oil">
+    Tracability
+  </h3>
+    <ul class="small-block-grid-2">
+        <li>
+            <p class="no-margin c-steel">
+                Source Document
+            </p>
+            <p class="no-margin">
+                Specification - Drug Substance
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Source Document Number
+            </p>
+            <p class="no-margin">
+                1.0
+            </p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">
+                Notification List
+            </p>
+            <p class="no-margin">
+                cd_dublin_coordinators
+            </p>
+        </li>
+    </ul>
+</aside>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;aside class=&quot;doc-aside padding border-bottom ng-scope&quot;&gt;
+    &lt;h3 class=&quot;t-normal tiny c-oil&quot;&gt;
+    Tracability
+  &lt;/h3&gt;
+    &lt;ul class=&quot;small-block-grid-2&quot;&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Source Document
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Specification - Drug Substance
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Source Document Number
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                1.0
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Notification List
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                cd_dublin_coordinators
+            &lt;/p&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-aside--viewed">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Aside  Viewed</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<aside class="doc-aside padding border-bottom">
+    <h3 class="t-light tiny c-steel">Also Viewed</h3>
+
+    <ul class="item-list">
+        <li>
+            <h1 class="t-normal delta no-margin">
+        <a href="#" class="a-oil d-block">Dominic R
+          <span class="ui-icon right">
+            <svg>
+              <use xlink:href="#i-more" />
+            </svg>
+          </span>
+        </a>
+      </h1>
+            <p class="c-steel">commented on Aug 15th at 4:24 PM</p>
+        </li>
+        <li>
+            <h1 class="t-normal delta no-margin">
+        <a href="#" class="a-oil d-block">Ralph B
+          <span class="ui-icon right">
+            <svg>
+              <use xlink:href="#i-more" />
+            </svg>
+          </span>
+        </a>
+      </h1>
+            <p class="c-steel">opened on Aug 13th at 3:24 PM</p>
+        </li>
+        <li>
+            <h1 class="t-normal delta no-margin">
+        <a href="#" class="a-oil d-block">Gred W
+          <span class="ui-icon right">
+            <svg>
+              <use xlink:href="#i-more" />
+            </svg>
+          </span>
+        </a>
+      </h1>
+            <p class="c-steel">edited on Aug 12th at 1:24 PM</p>
+        </li>
+    </ul>
+</aside>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;aside class=&quot;doc-aside padding border-bottom&quot;&gt;
+    &lt;h3 class=&quot;t-light tiny c-steel&quot;&gt;Also Viewed&lt;/h3&gt;
+
+    &lt;ul class=&quot;item-list&quot;&gt;
+        &lt;li&gt;
+            &lt;h1 class=&quot;t-normal delta no-margin&quot;&gt;
+        &lt;a href=&quot;#&quot; class=&quot;a-oil d-block&quot;&gt;Dominic R
+          &lt;span class=&quot;ui-icon right&quot;&gt;
+            &lt;svg&gt;
+              &lt;use xlink:href=&quot;#i-more&quot; /&gt;
+            &lt;/svg&gt;
+          &lt;/span&gt;
+        &lt;/a&gt;
+      &lt;/h1&gt;
+            &lt;p class=&quot;c-steel&quot;&gt;commented on Aug 15th at 4:24 PM&lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;h1 class=&quot;t-normal delta no-margin&quot;&gt;
+        &lt;a href=&quot;#&quot; class=&quot;a-oil d-block&quot;&gt;Ralph B
+          &lt;span class=&quot;ui-icon right&quot;&gt;
+            &lt;svg&gt;
+              &lt;use xlink:href=&quot;#i-more&quot; /&gt;
+            &lt;/svg&gt;
+          &lt;/span&gt;
+        &lt;/a&gt;
+      &lt;/h1&gt;
+            &lt;p class=&quot;c-steel&quot;&gt;opened on Aug 13th at 3:24 PM&lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;h1 class=&quot;t-normal delta no-margin&quot;&gt;
+        &lt;a href=&quot;#&quot; class=&quot;a-oil d-block&quot;&gt;Gred W
+          &lt;span class=&quot;ui-icon right&quot;&gt;
+            &lt;svg&gt;
+              &lt;use xlink:href=&quot;#i-more&quot; /&gt;
+            &lt;/svg&gt;
+          &lt;/span&gt;
+        &lt;/a&gt;
+      &lt;/h1&gt;
+            &lt;p class=&quot;c-steel&quot;&gt;edited on Aug 12th at 1:24 PM&lt;/p&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-aside-brief">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Aside Brief</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<aside class="doc-aside aside-short border-bottom">
+    <ul class="small-block-grid-2 aside-emphasis">
+        <li>
+            <p class="no-margin c-steel">Modified on</p>
+            <p class="no-margin">April 23 2013, 11:46:08</p>
+            <p class="no-margin">by <span class="t-semi">Susan B</span></p>
+        </li>
+        <li>
+            <p class="no-margin c-steel">Created on</p>
+            <p class="no-margin">May 23 2014, 11:46:08</p>
+            <p class="no-margin">by <span class="t-semi">Dominic R</span></p>
+        </li>
+    </ul>
+</aside>
+
+<aside class="doc-aside padding border-bottom">
+    <ul class="small-block-grid-2">
+        <li class="padding-bottom-none">
+            <p class="no-margin c-steel">
+                Group
+            </p>
+            <p class="no-margin">
+                Efficacy and Safety
+            </p>
+        </li>
+        <li class="padding-bottom-none">
+            <p class="no-margin c-steel">
+                Sub Group
+            </p>
+            <p class="no-margin">
+                Controlled and Clinical Studies Pertinent to the Claimed Indication
+            </p>
+        </li>
+    </ul>
+    <!--   <p class="no-margin c-steel">Version</p>
+  <p>1.1, CURRENT</p> -->
+</aside>
+
+<!-- <aside class="doc-aside padding border-bottom bg-oil">
+  <a href="" class="a-white">
+    Advanced Properties 
+    <span class="ui-icon right"><svg class="i-bright"><use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="#i-down"></use></svg></span>
+  </a>
+</aside> -->
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;aside class=&quot;doc-aside aside-short border-bottom&quot;&gt;
+    &lt;ul class=&quot;small-block-grid-2 aside-emphasis&quot;&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;Modified on&lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;April 23 2013, 11:46:08&lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;by &lt;span class=&quot;t-semi&quot;&gt;Susan B&lt;/span&gt;&lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;Created on&lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;May 23 2014, 11:46:08&lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;by &lt;span class=&quot;t-semi&quot;&gt;Dominic R&lt;/span&gt;&lt;/p&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;
+
+&lt;aside class=&quot;doc-aside padding border-bottom&quot;&gt;
+    &lt;ul class=&quot;small-block-grid-2&quot;&gt;
+        &lt;li class=&quot;padding-bottom-none&quot;&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Group
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Efficacy and Safety
+            &lt;/p&gt;
+        &lt;/li&gt;
+        &lt;li class=&quot;padding-bottom-none&quot;&gt;
+            &lt;p class=&quot;no-margin c-steel&quot;&gt;
+                Sub Group
+            &lt;/p&gt;
+            &lt;p class=&quot;no-margin&quot;&gt;
+                Controlled and Clinical Studies Pertinent to the Claimed Indication
+            &lt;/p&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;!--   &lt;p class=&quot;no-margin c-steel&quot;&gt;Version&lt;/p&gt;
+  &lt;p&gt;1.1, CURRENT&lt;/p&gt; --&gt;
+&lt;/aside&gt;
+
+&lt;!-- &lt;aside class=&quot;doc-aside padding border-bottom bg-oil&quot;&gt;
+  &lt;a href=&quot;&quot; class=&quot;a-white&quot;&gt;
+    Advanced Properties 
+    &lt;span class=&quot;ui-icon right&quot;&gt;&lt;svg class=&quot;i-bright&quot;&gt;&lt;use xmlns:xlink=&quot;http://www.w3.org/1999/xlink&quot; xlink:href=&quot;#i-down&quot;&gt;&lt;/use&gt;&lt;/svg&gt;&lt;/span&gt;
+  &lt;/a&gt;
+&lt;/aside&gt; --&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-header">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Header</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<span class="doc-status">Effective</span>
+<h1 class="doc-header-title gamma t-normal no-margin">Document Title</h1>
+<p class="t-normal">document-name02</p>
+<span class="version-label t-normal right">v. 1.0</span>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;span class=&quot;doc-status&quot;&gt;Effective&lt;/span&gt;
+&lt;h1 class=&quot;doc-header-title gamma t-normal no-margin&quot;&gt;Document Title&lt;/h1&gt;
+&lt;p class=&quot;t-normal&quot;&gt;document-name02&lt;/p&gt;
+&lt;span class=&quot;version-label t-normal right&quot;&gt;v. 1.0&lt;/span&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-header--for-approval">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Header  For Approval</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<span class="doc-status">For Approval</span>
+<h1 class="doc-header-title gamma t-normal no-margin">Document Title</h1>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;span class=&quot;doc-status&quot;&gt;For Approval&lt;/span&gt;
+&lt;h1 class=&quot;doc-header-title gamma t-normal no-margin&quot;&gt;Document Title&lt;/h1&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-header-actions">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Header Actions</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<aside class="doc-header-actions padding-top--2x">
+    <ul class="small-block-grid-4">
+        <li>
+            <a href="" class="a-round a-white">
+                <span class="icon-round ui-icon">
+          <svg>
+            <use xlink:href="#i-star" />
+          </svg>
+        </span>
+                <span class="icon-round-name quark">Favorite</span>
+            </a>
+        </li>
+        <li>
+            <a href="" class="a-round a-white">
+                <span class="icon-round ui-icon">
+          <svg>
+            <use xlink:href="#i-comment" />
+          </svg>
+        </span>
+                <span class="icon-round-name quark">Comment</span>
+            </a>
+        </li>
+        <li>
+            <a href="" class="a-round a-white">
+                <span class="icon-round ui-icon">
+          <svg>
+            <use xlink:href="#i-download" />
+          </svg>
+        </span>
+                <span class="icon-round-name quark">Download</span>
+            </a>
+        </li>
+        <li>
+            <a href="#" class="a-round a-white" data-reveal-id="myModal">
+                <span class="icon-round ui-icon">
+          <svg>
+            <use xlink:href="#i-more" />
+          </svg>
+        </span>
+                <span class="icon-round-name quark">Related</span>
+            </a>
+        </li>
+    </ul>
+</aside>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;aside class=&quot;doc-header-actions padding-top--2x&quot;&gt;
+    &lt;ul class=&quot;small-block-grid-4&quot;&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;&quot; class=&quot;a-round a-white&quot;&gt;
+                &lt;span class=&quot;icon-round ui-icon&quot;&gt;
+          &lt;svg&gt;
+            &lt;use xlink:href=&quot;#i-star&quot; /&gt;
+          &lt;/svg&gt;
+        &lt;/span&gt;
+                &lt;span class=&quot;icon-round-name quark&quot;&gt;Favorite&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;&quot; class=&quot;a-round a-white&quot;&gt;
+                &lt;span class=&quot;icon-round ui-icon&quot;&gt;
+          &lt;svg&gt;
+            &lt;use xlink:href=&quot;#i-comment&quot; /&gt;
+          &lt;/svg&gt;
+        &lt;/span&gt;
+                &lt;span class=&quot;icon-round-name quark&quot;&gt;Comment&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;&quot; class=&quot;a-round a-white&quot;&gt;
+                &lt;span class=&quot;icon-round ui-icon&quot;&gt;
+          &lt;svg&gt;
+            &lt;use xlink:href=&quot;#i-download&quot; /&gt;
+          &lt;/svg&gt;
+        &lt;/span&gt;
+                &lt;span class=&quot;icon-round-name quark&quot;&gt;Download&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;a-round a-white&quot; data-reveal-id=&quot;myModal&quot;&gt;
+                &lt;span class=&quot;icon-round ui-icon&quot;&gt;
+          &lt;svg&gt;
+            &lt;use xlink:href=&quot;#i-more&quot; /&gt;
+          &lt;/svg&gt;
+        &lt;/span&gt;
+                &lt;span class=&quot;icon-round-name quark&quot;&gt;Related&lt;/span&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-header-actions-flat">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Header Actions Flat</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<aside class="doc-header-actions icon-bar-flat">
+    <ul class="small-block-grid-4">
+        <li>
+            <a href="" class="a-white">
+                <span class="ui-icon">
+          <svg class="i-active">
+            <use xlink:href="#i-star" />
+          </svg>
+        </span>
+                <!-- <span class="icon-round-name quark">Favorite</span> -->
+            </a>
+        </li>
+        <li>
+            <a href="" class="a-white">
+                <span class="ui-icon">
+          <svg>
+            <use xlink:href="#i-clock" />
+          </svg>
+        </span>
+                <!-- <span class="icon-round-name quark">Download</span> -->
+            </a>
+        </li>
+        <li>
+            <a href="" class="a-white">
+                <span class="ui-icon">
+          <svg>
+            <use xlink:href="#i-related" />
+          </svg>
+        </span>
+                <!-- <span class="icon-round-name quark">Comment</span> -->
+            </a>
+        </li>
+        <li>
+            <a href="#" class="a-white">
+                <span class="ui-icon">
+          <svg>
+            <use xlink:href="#i-more" />
+          </svg>
+        </span>
+                <!-- <span class="icon-round-name quark">Related</span> -->
+            </a>
+        </li>
+    </ul>
+</aside>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;aside class=&quot;doc-header-actions icon-bar-flat&quot;&gt;
+    &lt;ul class=&quot;small-block-grid-4&quot;&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;&quot; class=&quot;a-white&quot;&gt;
+                &lt;span class=&quot;ui-icon&quot;&gt;
+          &lt;svg class=&quot;i-active&quot;&gt;
+            &lt;use xlink:href=&quot;#i-star&quot; /&gt;
+          &lt;/svg&gt;
+        &lt;/span&gt;
+                &lt;!-- &lt;span class=&quot;icon-round-name quark&quot;&gt;Favorite&lt;/span&gt; --&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;&quot; class=&quot;a-white&quot;&gt;
+                &lt;span class=&quot;ui-icon&quot;&gt;
+          &lt;svg&gt;
+            &lt;use xlink:href=&quot;#i-clock&quot; /&gt;
+          &lt;/svg&gt;
+        &lt;/span&gt;
+                &lt;!-- &lt;span class=&quot;icon-round-name quark&quot;&gt;Download&lt;/span&gt; --&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;&quot; class=&quot;a-white&quot;&gt;
+                &lt;span class=&quot;ui-icon&quot;&gt;
+          &lt;svg&gt;
+            &lt;use xlink:href=&quot;#i-related&quot; /&gt;
+          &lt;/svg&gt;
+        &lt;/span&gt;
+                &lt;!-- &lt;span class=&quot;icon-round-name quark&quot;&gt;Comment&lt;/span&gt; --&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;a-white&quot;&gt;
+                &lt;span class=&quot;ui-icon&quot;&gt;
+          &lt;svg&gt;
+            &lt;use xlink:href=&quot;#i-more&quot; /&gt;
+          &lt;/svg&gt;
+        &lt;/span&gt;
+                &lt;!-- &lt;span class=&quot;icon-round-name quark&quot;&gt;Related&lt;/span&gt; --&gt;
+            &lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-list-header">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc List Header</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<header class="item-header">
+    <h1 class="doc-title epsilon t-normal no-margin">
+    <a href="doc-single.html">
+      document-name.pdf
+    </a>
+  </h1>
+    <div class="byline">
+        <p class="byline-name no-margin">
+            <span class="byline-date">Susan B. reviewed yesterday at 4:24pm</span>
+        </p>
+    </div>
+    <span class="doc-status label radius">effective</span><span class="label radius bg-steel margin-left--half">v2.0</span>
+</header>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;header class=&quot;item-header&quot;&gt;
+    &lt;h1 class=&quot;doc-title epsilon t-normal no-margin&quot;&gt;
+    &lt;a href=&quot;doc-single.html&quot;&gt;
+      document-name.pdf
+    &lt;/a&gt;
+  &lt;/h1&gt;
+    &lt;div class=&quot;byline&quot;&gt;
+        &lt;p class=&quot;byline-name no-margin&quot;&gt;
+            &lt;span class=&quot;byline-date&quot;&gt;Susan B. reviewed yesterday at 4:24pm&lt;/span&gt;
+        &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;span class=&quot;doc-status label radius&quot;&gt;effective&lt;/span&gt;&lt;span class=&quot;label radius bg-steel margin-left--half&quot;&gt;v2.0&lt;/span&gt;
+&lt;/header&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-list-header--search">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc List Header  Search</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<header class="task-header">
+    <h1 class="task-title t-normal no-margin">
+    <a href="task-single.html">
+      document-name.pdf
+    </a>
+  </h1>
+    <div class="byline">
+        <p class="byline-name no-margin">
+            <span class="byline-date">Susan B. reviewed yesterday at 4:24pm</span>
+        </p>
+    </div>
+</header>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;header class=&quot;task-header&quot;&gt;
+    &lt;h1 class=&quot;task-title t-normal no-margin&quot;&gt;
+    &lt;a href=&quot;task-single.html&quot;&gt;
+      document-name.pdf
+    &lt;/a&gt;
+  &lt;/h1&gt;
+    &lt;div class=&quot;byline&quot;&gt;
+        &lt;p class=&quot;byline-name no-margin&quot;&gt;
+            &lt;span class=&quot;byline-date&quot;&gt;Susan B. reviewed yesterday at 4:24pm&lt;/span&gt;
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-object">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Object</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<!-- <object data="/assets/toolkit/images/doc-flat.pdf" type="application/pdf" width="100%" height="100%">
+  </object> -->
+<article class="doc-object">
+    <img src="/assets/toolkit/images/doc-preview.png">
+    <img src="/assets/toolkit/images/doc-preview.png">
+</article>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;!-- &lt;object data=&quot;/assets/toolkit/images/doc-flat.pdf&quot; type=&quot;application/pdf&quot; width=&quot;100%&quot; height=&quot;100%&quot;&gt;
+  &lt;/object&gt; --&gt;
+&lt;article class=&quot;doc-object&quot;&gt;
+    &lt;img src=&quot;/assets/toolkit/images/doc-preview.png&quot;&gt;
+    &lt;img src=&quot;/assets/toolkit/images/doc-preview.png&quot;&gt;
+&lt;/article&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="doc-tools">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Doc Tools</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<section class="task-tools">
+    <div class="icon-band">
+        <a class="item ui-icon">
+            <svg>
+                <use xlink:href="#i-info" />
+            </svg>
+        </a>
+
+        <a href="#" class="item ui-icon" data-reveal-id="myModal">
+            <svg>
+                <use xlink:href="#i-related" />
+            </svg>
+        </a>
+
+        <a class="item ui-icon">
+            <svg>
+                <use xlink:href="#i-more" />
+            </svg>
+        </a>
+    </div>
+</section>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;section class=&quot;task-tools&quot;&gt;
+    &lt;div class=&quot;icon-band&quot;&gt;
+        &lt;a class=&quot;item ui-icon&quot;&gt;
+            &lt;svg&gt;
+                &lt;use xlink:href=&quot;#i-info&quot; /&gt;
+            &lt;/svg&gt;
+        &lt;/a&gt;
+
+        &lt;a href=&quot;#&quot; class=&quot;item ui-icon&quot; data-reveal-id=&quot;myModal&quot;&gt;
+            &lt;svg&gt;
+                &lt;use xlink:href=&quot;#i-related&quot; /&gt;
+            &lt;/svg&gt;
+        &lt;/a&gt;
+
+        &lt;a class=&quot;item ui-icon&quot;&gt;
+            &lt;svg&gt;
+                &lt;use xlink:href=&quot;#i-more&quot; /&gt;
+            &lt;/svg&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="header-top">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Header Top</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<!-- <h3 class="small c-white t-normal left"></h3> -->
+<a href="#" class="a-icon small a-rgba right">
+  Preview
+  <span class="ui-icon i-rgba">
+    <svg>
+      <use xlink:href="#i-eye" />
+    </svg>
+  </span>
+</a>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;!-- &lt;h3 class=&quot;small c-white t-normal left&quot;&gt;&lt;/h3&gt; --&gt;
+&lt;a href=&quot;#&quot; class=&quot;a-icon small a-rgba right&quot;&gt;
+  Preview
+  &lt;span class=&quot;ui-icon i-rgba&quot;&gt;
+    &lt;svg&gt;
+      &lt;use xlink:href=&quot;#i-eye&quot; /&gt;
+    &lt;/svg&gt;
+  &lt;/span&gt;
+&lt;/a&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="list-content-types">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">List Content Types</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<ul class="full-list">
+    <li>
+        <a href="#" class="a-oil block-link">
+      Activity
+    </a>
+    </li>
+    <li>
+        <a href="#" class="a-oil block-link">
+      Documents
+    </a>
+    </li>
+    <li>
+        <a href="#" class="a-oil block-link">
+      People
+    </a>
+    </li>
+</ul>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;ul class=&quot;full-list&quot;&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;#&quot; class=&quot;a-oil block-link&quot;&gt;
+      Activity
+    &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;#&quot; class=&quot;a-oil block-link&quot;&gt;
+      Documents
+    &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;#&quot; class=&quot;a-oil block-link&quot;&gt;
+      People
+    &lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="nav-aside-list">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Nav Aside List</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<div class="show-for-medium-up">
+    <header class="profile-header bg-profile padding c-white">
+        <h1 class="alpha t-normal no-margin">Mike C.</h1>
+        <p class="byline">
+            <a class="a-white" href="">mikec@emc.com</a>
+        </p>
+    </header>
+</div>
+<ul class="off-canvas-list">
+    <li>
+        <label>Foundation</label>
+    </li>
+    <li><a href="#">The Psychohistorians</a></li>
+    <li><a href="#">...</a></li>
+</ul>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;div class=&quot;show-for-medium-up&quot;&gt;
+    &lt;header class=&quot;profile-header bg-profile padding c-white&quot;&gt;
+        &lt;h1 class=&quot;alpha t-normal no-margin&quot;&gt;Mike C.&lt;/h1&gt;
+        &lt;p class=&quot;byline&quot;&gt;
+            &lt;a class=&quot;a-white&quot; href=&quot;&quot;&gt;mikec@emc.com&lt;/a&gt;
+        &lt;/p&gt;
+    &lt;/header&gt;
+&lt;/div&gt;
+&lt;ul class=&quot;off-canvas-list&quot;&gt;
+    &lt;li&gt;
+        &lt;label&gt;Foundation&lt;/label&gt;
+    &lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;The Psychohistorians&lt;/a&gt;&lt;/li&gt;
+    &lt;li&gt;&lt;a href=&quot;#&quot;&gt;...&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="panel-content">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Panel Content</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<div class="panel-content">
+    <h1 class="gamma t-normal c-white">Document Title</h1>
+    <p class="c-white">Draft</p>
+    <p class="c-steel">May 9 2012</p>
+    <p class="c-steel">London</p>
+    <hr>
+    <aside>
+        <p class="c-steel">Modified</p>
+        <p class="c-white">May 23 2014, 11:46:08</p>
+        <br>
+        <p class="c-steel">Version</p>
+        <p class="c-white">1.1, Current</p>
+    </aside>
+</div>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;div class=&quot;panel-content&quot;&gt;
+    &lt;h1 class=&quot;gamma t-normal c-white&quot;&gt;Document Title&lt;/h1&gt;
+    &lt;p class=&quot;c-white&quot;&gt;Draft&lt;/p&gt;
+    &lt;p class=&quot;c-steel&quot;&gt;May 9 2012&lt;/p&gt;
+    &lt;p class=&quot;c-steel&quot;&gt;London&lt;/p&gt;
+    &lt;hr&gt;
+    &lt;aside&gt;
+        &lt;p class=&quot;c-steel&quot;&gt;Modified&lt;/p&gt;
+        &lt;p class=&quot;c-white&quot;&gt;May 23 2014, 11:46:08&lt;/p&gt;
+        &lt;br&gt;
+        &lt;p class=&quot;c-steel&quot;&gt;Version&lt;/p&gt;
+        &lt;p class=&quot;c-white&quot;&gt;1.1, Current&lt;/p&gt;
+    &lt;/aside&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="panel-list">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Panel List</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<div class="panel-content">
+    <ul class="full-list">
+        <li>
+            <a href="#" class="block-link a-jumbo">
+                <span class="ui-icon i-bright">
+        <svg>
+          <use xlink:href="#i-info" />
+        </svg>
+      </span> Properties</a>
+        </li>
+        <li>
+            <a href="#" class="block-link a-jumbo">
+                <span class="ui-icon i-bright">
+        <svg>
+          <use xlink:href="#i-star" />
+        </svg>
+      </span> Favorite & Follow</a>
+        </li>
+        <li>
+            <a href="#" class="block-link a-jumbo">
+                <span class="ui-icon i-bright">
+        <svg>
+          <use xlink:href="#i-comment" />
+        </svg>
+      </span> Comment</a>
+        </li>
+        <li>
+            <a href="#" class="block-link a-jumbo">
+                <span class="ui-icon i-bright">
+        <svg>
+          <use xlink:href="#i-clock" />
+        </svg>
+      </span> History</a>
+        </li>
+        <li>
+            <a href="#" class="block-link a-jumbo">
+                <span class="ui-icon i-bright">
+        <svg>
+          <use xlink:href="#i-search" />
+        </svg>
+      </span> Browse Related Documents</a>
+        </li>
+
+    </ul>
+</div>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;div class=&quot;panel-content&quot;&gt;
+    &lt;ul class=&quot;full-list&quot;&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;block-link a-jumbo&quot;&gt;
+                &lt;span class=&quot;ui-icon i-bright&quot;&gt;
+        &lt;svg&gt;
+          &lt;use xlink:href=&quot;#i-info&quot; /&gt;
+        &lt;/svg&gt;
+      &lt;/span&gt; Properties&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;block-link a-jumbo&quot;&gt;
+                &lt;span class=&quot;ui-icon i-bright&quot;&gt;
+        &lt;svg&gt;
+          &lt;use xlink:href=&quot;#i-star&quot; /&gt;
+        &lt;/svg&gt;
+      &lt;/span&gt; Favorite &amp; Follow&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;block-link a-jumbo&quot;&gt;
+                &lt;span class=&quot;ui-icon i-bright&quot;&gt;
+        &lt;svg&gt;
+          &lt;use xlink:href=&quot;#i-comment&quot; /&gt;
+        &lt;/svg&gt;
+      &lt;/span&gt; Comment&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;block-link a-jumbo&quot;&gt;
+                &lt;span class=&quot;ui-icon i-bright&quot;&gt;
+        &lt;svg&gt;
+          &lt;use xlink:href=&quot;#i-clock&quot; /&gt;
+        &lt;/svg&gt;
+      &lt;/span&gt; History&lt;/a&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;block-link a-jumbo&quot;&gt;
+                &lt;span class=&quot;ui-icon i-bright&quot;&gt;
+        &lt;svg&gt;
+          &lt;use xlink:href=&quot;#i-search&quot; /&gt;
+        &lt;/svg&gt;
+      &lt;/span&gt; Browse Related Documents&lt;/a&gt;
+        &lt;/li&gt;
+
+    &lt;/ul&gt;
+&lt;/div&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="people-list-header">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">People List Header</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<header class="item-header">
+    <h1 class="item-title delta t-normal no-margin">
+    <a href="#">
+      Barbara A.
+    </a>
+  </h1>
+    <div class="byline">
+        <p class="byline-name no-margin">
+            <span class="byline-date">reviewed Clinical Study yesterday at 4:24pm</span>
+        </p>
+    </div>
+</header>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;header class=&quot;item-header&quot;&gt;
+    &lt;h1 class=&quot;item-title delta t-normal no-margin&quot;&gt;
+    &lt;a href=&quot;#&quot;&gt;
+      Barbara A.
+    &lt;/a&gt;
+  &lt;/h1&gt;
+    &lt;div class=&quot;byline&quot;&gt;
+        &lt;p class=&quot;byline-name no-margin&quot;&gt;
+            &lt;span class=&quot;byline-date&quot;&gt;reviewed Clinical Study yesterday at 4:24pm&lt;/span&gt;
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="profile-header-actions-flat">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Profile Header Actions Flat</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<aside class="profile-header-actions icon-bar-flat">
+    <ul>
+        <!--     <li>
+      <a href="" class="a-icon a-rgba">
+        <span class="ui-icon">
+          <svg>
+            <use xlink:href="#i-star" />
+          </svg>
+        </span>
+        Follow
+      </a>
+    </li> -->
+
+        <li>
+            <a href="" class="a-icon a-following">
+                <span class="ui-icon">
+          <svg class="i-warn">
+            <use xlink:href="#i-star" />
+          </svg>
+        </span> Following
+            </a>
+        </li>
+    </ul>
+</aside>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;aside class=&quot;profile-header-actions icon-bar-flat&quot;&gt;
+    &lt;ul&gt;
+        &lt;!--     &lt;li&gt;
+      &lt;a href=&quot;&quot; class=&quot;a-icon a-rgba&quot;&gt;
+        &lt;span class=&quot;ui-icon&quot;&gt;
+          &lt;svg&gt;
+            &lt;use xlink:href=&quot;#i-star&quot; /&gt;
+          &lt;/svg&gt;
+        &lt;/span&gt;
+        Follow
+      &lt;/a&gt;
+    &lt;/li&gt; --&gt;
+
+        &lt;li&gt;
+            &lt;a href=&quot;&quot; class=&quot;a-icon a-following&quot;&gt;
+                &lt;span class=&quot;ui-icon&quot;&gt;
+          &lt;svg class=&quot;i-warn&quot;&gt;
+            &lt;use xlink:href=&quot;#i-star&quot; /&gt;
+          &lt;/svg&gt;
+        &lt;/span&gt; Following
+            &lt;/a&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/aside&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="search-aside-list">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Search Aside List</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<label class="search-label">Recent Searches</label>
+<ul class="item-list">
+    <li class="item-item">
+        <h3 class="item-title no-margin">
+      <a href="#">Clinical Study</a>
+    </h3>
+        <div class="byline">
+            <p class="byline-name no-margin">
+                <span class="byline-date">yesterday at 4:24pm</span>
+            </p>
+        </div>
+    </li>
+    <li class="item-item">
+        <h3 class="item-title no-margin">
+      <a href="#">Hari Seldon</a>
+    </h3>
+        <div class="byline">
+            <p class="byline-name no-margin">
+                <span class="byline-date">yesterday at 4:24pm</span>
+            </p>
+        </div>
+    </li>
+</ul>
+
+<label class="search-label">Users</label>
+<ul class="item-list">
+    <li class="item-item">
+        <h3 class="item-title no-margin">
+      <a href="#">Hari Seldon</a>
+    </h3>
+    </li>
+    <li class="item-item">
+        <h3 class="item-title no-margin">
+      <a href="#">Barbara Smith</a>
+    </h3>
+    </li>
+</ul>
+
+<label class="search-label">Documents</label>
+<ul class="doc-list">
+    <li class="doc-item">
+        <header class="task-header">
+            <h1 class="task-title t-normal no-margin">
+        <a href="task-single.html">
+          document-name.pdf
+        </a>
+      </h1>
+            <div class="byline">
+                <p class="byline-name no-margin">
+                    <span class="byline-date">Susan B. reviewed yesterday at 4:24pm</span>
+                </p>
+            </div>
+        </header>
+    </li>
+    <li class="doc-item">
+        <header class="task-header">
+            <h1 class="task-title t-normal no-margin">
+        <a href="task-single.html">
+          document-name.pdf
+        </a>
+      </h1>
+            <div class="byline">
+                <p class="byline-name no-margin">
+                    <span class="byline-date">Susan B. reviewed yesterday at 4:24pm</span>
+                </p>
+            </div>
+        </header>
+    </li>
+    <li class="doc-item">
+        <header class="task-header">
+            <h1 class="task-title t-normal no-margin">
+        <a href="task-single.html">
+          document-name.pdf
+        </a>
+      </h1>
+            <div class="byline">
+                <p class="byline-name no-margin">
+                    <span class="byline-date">Susan B. reviewed yesterday at 4:24pm</span>
+                </p>
+            </div>
+        </header>
+    </li>
+</ul>
+
+<label class="search-label">Tasks</label>
+<ul class="task-list">
+    <li class="task-item">
+        <header class="task-header item-header">
+            <span class="task-status label radius secondary">For Approval</span>
+            <h1 class="task-title t-normal no-margin">
+        <a href="task-single.html">
+          Ibuprofen Case Study
+        </a>
+      </h1>
+            <div class="byline">
+                <p class="byline-name">Susan B.
+                    <span class="byline-date">due at 4:24pm</span>
+                </p>
+            </div>
+        </header>
+    </li>
+    <li class="task-item">
+        <header class="task-header item-header">
+            <span class="task-status label radius secondary">For Approval</span>
+            <h1 class="task-title t-normal no-margin">
+        <a href="task-single.html">
+          Ibuprofen Case Study
+        </a>
+      </h1>
+            <div class="byline">
+                <p class="byline-name">Susan B.
+                    <span class="byline-date">due at 4:24pm</span>
+                </p>
+            </div>
+        </header>
+    </li>
+    <li class="task-item">
+        <header class="task-header item-header">
+            <span class="task-status label radius secondary">For Approval</span>
+            <h1 class="task-title t-normal no-margin">
+        <a href="task-single.html">
+          Ibuprofen Case Study
+        </a>
+      </h1>
+            <div class="byline">
+                <p class="byline-name">Susan B.
+                    <span class="byline-date">due at 4:24pm</span>
+                </p>
+            </div>
+        </header>
+    </li>
+</ul>
+
+<label class="search-label">Activity</label>
+<ul class="item-list">
+    <li class="item-item">
+        <header class="timeline-header">
+            <h1 class="item-title t-light epsilon no-margin">
+        <a class="c-oil" href="task-single.html">
+          <span class="t-semi">Susan B.</span> revised <span class="t-semi">document-name</span><span class="label radius bg-steel">v1.0</span>
+        </a>
+      </h1>
+            <div class="byline">
+                <p class="byline-name no-margin">
+                    <span class="byline-date">yesterday at 4:24pm</span>
+                </p>
+                <p class="no-margin"><em class="c-iron margin-top--half d-block">Because you follow Susan</em></p>
+            </div>
+        </header>
+    </li>
+    <li class="item-item">
+        <header class="timeline-header">
+            <h1 class="item-title t-light epsilon no-margin">
+        <a class="c-oil" href="task-single.html">
+          <span class="t-semi">Susan B.</span> revised <span class="t-semi">document-name</span><span class="label radius bg-steel">v1.0</span>
+        </a>
+      </h1>
+            <div class="byline">
+                <p class="byline-name no-margin">
+                    <span class="byline-date">yesterday at 4:24pm</span>
+                </p>
+                <p class="no-margin"><em class="c-iron margin-top--half d-block">Because you follow Susan</em></p>
+            </div>
+        </header>
+    </li>
+    <li class="item-item">
+        <header class="timeline-header">
+            <h1 class="item-title t-light epsilon no-margin">
+        <a class="c-oil" href="task-single.html">
+          <span class="t-semi">Susan B.</span> revised <span class="t-semi">document-name</span><span class="label radius bg-steel">v1.0</span>
+        </a>
+      </h1>
+            <div class="byline">
+                <p class="byline-name no-margin">
+                    <span class="byline-date">yesterday at 4:24pm</span>
+                </p>
+                <p class="no-margin"><em class="c-iron margin-top--half d-block">Because you follow Susan</em></p>
+            </div>
+        </header>
+    </li>
+</ul>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;label class=&quot;search-label&quot;&gt;Recent Searches&lt;/label&gt;
+&lt;ul class=&quot;item-list&quot;&gt;
+    &lt;li class=&quot;item-item&quot;&gt;
+        &lt;h3 class=&quot;item-title no-margin&quot;&gt;
+      &lt;a href=&quot;#&quot;&gt;Clinical Study&lt;/a&gt;
+    &lt;/h3&gt;
+        &lt;div class=&quot;byline&quot;&gt;
+            &lt;p class=&quot;byline-name no-margin&quot;&gt;
+                &lt;span class=&quot;byline-date&quot;&gt;yesterday at 4:24pm&lt;/span&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;item-item&quot;&gt;
+        &lt;h3 class=&quot;item-title no-margin&quot;&gt;
+      &lt;a href=&quot;#&quot;&gt;Hari Seldon&lt;/a&gt;
+    &lt;/h3&gt;
+        &lt;div class=&quot;byline&quot;&gt;
+            &lt;p class=&quot;byline-name no-margin&quot;&gt;
+                &lt;span class=&quot;byline-date&quot;&gt;yesterday at 4:24pm&lt;/span&gt;
+            &lt;/p&gt;
+        &lt;/div&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;label class=&quot;search-label&quot;&gt;Users&lt;/label&gt;
+&lt;ul class=&quot;item-list&quot;&gt;
+    &lt;li class=&quot;item-item&quot;&gt;
+        &lt;h3 class=&quot;item-title no-margin&quot;&gt;
+      &lt;a href=&quot;#&quot;&gt;Hari Seldon&lt;/a&gt;
+    &lt;/h3&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;item-item&quot;&gt;
+        &lt;h3 class=&quot;item-title no-margin&quot;&gt;
+      &lt;a href=&quot;#&quot;&gt;Barbara Smith&lt;/a&gt;
+    &lt;/h3&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;label class=&quot;search-label&quot;&gt;Documents&lt;/label&gt;
+&lt;ul class=&quot;doc-list&quot;&gt;
+    &lt;li class=&quot;doc-item&quot;&gt;
+        &lt;header class=&quot;task-header&quot;&gt;
+            &lt;h1 class=&quot;task-title t-normal no-margin&quot;&gt;
+        &lt;a href=&quot;task-single.html&quot;&gt;
+          document-name.pdf
+        &lt;/a&gt;
+      &lt;/h1&gt;
+            &lt;div class=&quot;byline&quot;&gt;
+                &lt;p class=&quot;byline-name no-margin&quot;&gt;
+                    &lt;span class=&quot;byline-date&quot;&gt;Susan B. reviewed yesterday at 4:24pm&lt;/span&gt;
+                &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/header&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;doc-item&quot;&gt;
+        &lt;header class=&quot;task-header&quot;&gt;
+            &lt;h1 class=&quot;task-title t-normal no-margin&quot;&gt;
+        &lt;a href=&quot;task-single.html&quot;&gt;
+          document-name.pdf
+        &lt;/a&gt;
+      &lt;/h1&gt;
+            &lt;div class=&quot;byline&quot;&gt;
+                &lt;p class=&quot;byline-name no-margin&quot;&gt;
+                    &lt;span class=&quot;byline-date&quot;&gt;Susan B. reviewed yesterday at 4:24pm&lt;/span&gt;
+                &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/header&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;doc-item&quot;&gt;
+        &lt;header class=&quot;task-header&quot;&gt;
+            &lt;h1 class=&quot;task-title t-normal no-margin&quot;&gt;
+        &lt;a href=&quot;task-single.html&quot;&gt;
+          document-name.pdf
+        &lt;/a&gt;
+      &lt;/h1&gt;
+            &lt;div class=&quot;byline&quot;&gt;
+                &lt;p class=&quot;byline-name no-margin&quot;&gt;
+                    &lt;span class=&quot;byline-date&quot;&gt;Susan B. reviewed yesterday at 4:24pm&lt;/span&gt;
+                &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/header&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;label class=&quot;search-label&quot;&gt;Tasks&lt;/label&gt;
+&lt;ul class=&quot;task-list&quot;&gt;
+    &lt;li class=&quot;task-item&quot;&gt;
+        &lt;header class=&quot;task-header item-header&quot;&gt;
+            &lt;span class=&quot;task-status label radius secondary&quot;&gt;For Approval&lt;/span&gt;
+            &lt;h1 class=&quot;task-title t-normal no-margin&quot;&gt;
+        &lt;a href=&quot;task-single.html&quot;&gt;
+          Ibuprofen Case Study
+        &lt;/a&gt;
+      &lt;/h1&gt;
+            &lt;div class=&quot;byline&quot;&gt;
+                &lt;p class=&quot;byline-name&quot;&gt;Susan B.
+                    &lt;span class=&quot;byline-date&quot;&gt;due at 4:24pm&lt;/span&gt;
+                &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/header&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;task-item&quot;&gt;
+        &lt;header class=&quot;task-header item-header&quot;&gt;
+            &lt;span class=&quot;task-status label radius secondary&quot;&gt;For Approval&lt;/span&gt;
+            &lt;h1 class=&quot;task-title t-normal no-margin&quot;&gt;
+        &lt;a href=&quot;task-single.html&quot;&gt;
+          Ibuprofen Case Study
+        &lt;/a&gt;
+      &lt;/h1&gt;
+            &lt;div class=&quot;byline&quot;&gt;
+                &lt;p class=&quot;byline-name&quot;&gt;Susan B.
+                    &lt;span class=&quot;byline-date&quot;&gt;due at 4:24pm&lt;/span&gt;
+                &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/header&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;task-item&quot;&gt;
+        &lt;header class=&quot;task-header item-header&quot;&gt;
+            &lt;span class=&quot;task-status label radius secondary&quot;&gt;For Approval&lt;/span&gt;
+            &lt;h1 class=&quot;task-title t-normal no-margin&quot;&gt;
+        &lt;a href=&quot;task-single.html&quot;&gt;
+          Ibuprofen Case Study
+        &lt;/a&gt;
+      &lt;/h1&gt;
+            &lt;div class=&quot;byline&quot;&gt;
+                &lt;p class=&quot;byline-name&quot;&gt;Susan B.
+                    &lt;span class=&quot;byline-date&quot;&gt;due at 4:24pm&lt;/span&gt;
+                &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/header&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;label class=&quot;search-label&quot;&gt;Activity&lt;/label&gt;
+&lt;ul class=&quot;item-list&quot;&gt;
+    &lt;li class=&quot;item-item&quot;&gt;
+        &lt;header class=&quot;timeline-header&quot;&gt;
+            &lt;h1 class=&quot;item-title t-light epsilon no-margin&quot;&gt;
+        &lt;a class=&quot;c-oil&quot; href=&quot;task-single.html&quot;&gt;
+          &lt;span class=&quot;t-semi&quot;&gt;Susan B.&lt;/span&gt; revised &lt;span class=&quot;t-semi&quot;&gt;document-name&lt;/span&gt;&lt;span class=&quot;label radius bg-steel&quot;&gt;v1.0&lt;/span&gt;
+        &lt;/a&gt;
+      &lt;/h1&gt;
+            &lt;div class=&quot;byline&quot;&gt;
+                &lt;p class=&quot;byline-name no-margin&quot;&gt;
+                    &lt;span class=&quot;byline-date&quot;&gt;yesterday at 4:24pm&lt;/span&gt;
+                &lt;/p&gt;
+                &lt;p class=&quot;no-margin&quot;&gt;&lt;em class=&quot;c-iron margin-top--half d-block&quot;&gt;Because you follow Susan&lt;/em&gt;&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/header&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;item-item&quot;&gt;
+        &lt;header class=&quot;timeline-header&quot;&gt;
+            &lt;h1 class=&quot;item-title t-light epsilon no-margin&quot;&gt;
+        &lt;a class=&quot;c-oil&quot; href=&quot;task-single.html&quot;&gt;
+          &lt;span class=&quot;t-semi&quot;&gt;Susan B.&lt;/span&gt; revised &lt;span class=&quot;t-semi&quot;&gt;document-name&lt;/span&gt;&lt;span class=&quot;label radius bg-steel&quot;&gt;v1.0&lt;/span&gt;
+        &lt;/a&gt;
+      &lt;/h1&gt;
+            &lt;div class=&quot;byline&quot;&gt;
+                &lt;p class=&quot;byline-name no-margin&quot;&gt;
+                    &lt;span class=&quot;byline-date&quot;&gt;yesterday at 4:24pm&lt;/span&gt;
+                &lt;/p&gt;
+                &lt;p class=&quot;no-margin&quot;&gt;&lt;em class=&quot;c-iron margin-top--half d-block&quot;&gt;Because you follow Susan&lt;/em&gt;&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/header&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;item-item&quot;&gt;
+        &lt;header class=&quot;timeline-header&quot;&gt;
+            &lt;h1 class=&quot;item-title t-light epsilon no-margin&quot;&gt;
+        &lt;a class=&quot;c-oil&quot; href=&quot;task-single.html&quot;&gt;
+          &lt;span class=&quot;t-semi&quot;&gt;Susan B.&lt;/span&gt; revised &lt;span class=&quot;t-semi&quot;&gt;document-name&lt;/span&gt;&lt;span class=&quot;label radius bg-steel&quot;&gt;v1.0&lt;/span&gt;
+        &lt;/a&gt;
+      &lt;/h1&gt;
+            &lt;div class=&quot;byline&quot;&gt;
+                &lt;p class=&quot;byline-name no-margin&quot;&gt;
+                    &lt;span class=&quot;byline-date&quot;&gt;yesterday at 4:24pm&lt;/span&gt;
+                &lt;/p&gt;
+                &lt;p class=&quot;no-margin&quot;&gt;&lt;em class=&quot;c-iron margin-top--half d-block&quot;&gt;Because you follow Susan&lt;/em&gt;&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/header&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="search-aside-tags">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Search Aside Tags</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<label class="search-label">Recent Searches</label>
+<ul class="search-tags small-block-grid-2">
+    <li>
+        <a href="#">
+            <span class="search-tag">Clinical Studies</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <span class="search-tag">Efficacy & Safety</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <span class="search-tag">Specification</span>
+        </a>
+    </li>
+    <li>
+        <a href="#">
+            <span class="search-tag">Ibuprofen</span>
+        </a>
+    </li>
+</ul>
+
+<label class="search-label">Suggested Searches</label>
+<ul class="small-block-grid-2">
+    <li>
+        <h4 class="padding tiny t-normal c-steel no-margin padding-bottom-none">Users</h4>
+        <ul class="search-tags">
+            <li>
+                <a href="#">
+                    <span class="search-tag bg-user">Barbara S.</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="search-tag bg-user">William J.</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="search-tag bg-user">Ralph B.</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="search-tag bg-user">Sara W.</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+
+    <li>
+        <h4 class="padding tiny t-normal c-steel no-margin padding-bottom-none">Groups</h4>
+        <ul class="search-tags">
+            <li>
+                <a href="#">
+                    <span class="search-tag bg-effective">Efficacy</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="search-tag bg-effective">Applicant Informantion</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="search-tag bg-effective">Specification</span>
+                </a>
+            </li>
+            <li>
+                <a href="#">
+                    <span class="search-tag bg-effective">Safety</span>
+                </a>
+            </li>
+        </ul>
+    </li>
+</ul>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;label class=&quot;search-label&quot;&gt;Recent Searches&lt;/label&gt;
+&lt;ul class=&quot;search-tags small-block-grid-2&quot;&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;#&quot;&gt;
+            &lt;span class=&quot;search-tag&quot;&gt;Clinical Studies&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;#&quot;&gt;
+            &lt;span class=&quot;search-tag&quot;&gt;Efficacy &amp; Safety&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;#&quot;&gt;
+            &lt;span class=&quot;search-tag&quot;&gt;Specification&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li&gt;
+        &lt;a href=&quot;#&quot;&gt;
+            &lt;span class=&quot;search-tag&quot;&gt;Ibuprofen&lt;/span&gt;
+        &lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;label class=&quot;search-label&quot;&gt;Suggested Searches&lt;/label&gt;
+&lt;ul class=&quot;small-block-grid-2&quot;&gt;
+    &lt;li&gt;
+        &lt;h4 class=&quot;padding tiny t-normal c-steel no-margin padding-bottom-none&quot;&gt;Users&lt;/h4&gt;
+        &lt;ul class=&quot;search-tags&quot;&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;#&quot;&gt;
+                    &lt;span class=&quot;search-tag bg-user&quot;&gt;Barbara S.&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;#&quot;&gt;
+                    &lt;span class=&quot;search-tag bg-user&quot;&gt;William J.&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;#&quot;&gt;
+                    &lt;span class=&quot;search-tag bg-user&quot;&gt;Ralph B.&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;#&quot;&gt;
+                    &lt;span class=&quot;search-tag bg-user&quot;&gt;Sara W.&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+
+    &lt;li&gt;
+        &lt;h4 class=&quot;padding tiny t-normal c-steel no-margin padding-bottom-none&quot;&gt;Groups&lt;/h4&gt;
+        &lt;ul class=&quot;search-tags&quot;&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;#&quot;&gt;
+                    &lt;span class=&quot;search-tag bg-effective&quot;&gt;Efficacy&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;#&quot;&gt;
+                    &lt;span class=&quot;search-tag bg-effective&quot;&gt;Applicant Informantion&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;#&quot;&gt;
+                    &lt;span class=&quot;search-tag bg-effective&quot;&gt;Specification&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+            &lt;li&gt;
+                &lt;a href=&quot;#&quot;&gt;
+                    &lt;span class=&quot;search-tag bg-effective&quot;&gt;Safety&lt;/span&gt;
+                &lt;/a&gt;
+            &lt;/li&gt;
+        &lt;/ul&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="search-typeahead">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Search Typeahead</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<ul class="search-ahead f-dropdown" style="display: block; top: 133.188px; left: 15px;">
+    <li class="active">
+        <!--       <span class="search-list-icon">
+        <span class="ui-icon">
+          <svg>
+            <use xlink:href="#i-search" />
+          </svg>
+        </span>      </span> -->
+        <a class="">Ala<strong>s</strong>ka</a>
+    </li>
+    <li class="">
+        <a class="">Arkan<strong>s</strong>a<strong>s</strong></a>
+    </li>
+    <li class="">
+        <a class="">Ala<strong>s</strong>ka</a>
+    </li>
+    <li class="">
+        <a class="">Arkan<strong>s</strong>a<strong>s</strong></a>
+    </li>
+    <li class="search-type">
+        <a class="">Clint W <span class="right quark c-iron t-light">People</span></a>
+    </li>
+    <li class="search-type">
+        <a class="">Clinical Report <span class="right quark c-iron t-light">Document Type</span></a>
+    </li>
+    <li class="search-type">
+        <a class="">Clinical Report <span class="right quark c-iron t-light">Title</span></a>
+    </li>
+</ul>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;ul class=&quot;search-ahead f-dropdown&quot; style=&quot;display: block; top: 133.188px; left: 15px;&quot;&gt;
+    &lt;li class=&quot;active&quot;&gt;
+        &lt;!--       &lt;span class=&quot;search-list-icon&quot;&gt;
+        &lt;span class=&quot;ui-icon&quot;&gt;
+          &lt;svg&gt;
+            &lt;use xlink:href=&quot;#i-search&quot; /&gt;
+          &lt;/svg&gt;
+        &lt;/span&gt;      &lt;/span&gt; --&gt;
+        &lt;a class=&quot;&quot;&gt;Ala&lt;strong&gt;s&lt;/strong&gt;ka&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;&quot;&gt;
+        &lt;a class=&quot;&quot;&gt;Arkan&lt;strong&gt;s&lt;/strong&gt;a&lt;strong&gt;s&lt;/strong&gt;&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;&quot;&gt;
+        &lt;a class=&quot;&quot;&gt;Ala&lt;strong&gt;s&lt;/strong&gt;ka&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;&quot;&gt;
+        &lt;a class=&quot;&quot;&gt;Arkan&lt;strong&gt;s&lt;/strong&gt;a&lt;strong&gt;s&lt;/strong&gt;&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;search-type&quot;&gt;
+        &lt;a class=&quot;&quot;&gt;Clint W &lt;span class=&quot;right quark c-iron t-light&quot;&gt;People&lt;/span&gt;&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;search-type&quot;&gt;
+        &lt;a class=&quot;&quot;&gt;Clinical Report &lt;span class=&quot;right quark c-iron t-light&quot;&gt;Document Type&lt;/span&gt;&lt;/a&gt;
+    &lt;/li&gt;
+    &lt;li class=&quot;search-type&quot;&gt;
+        &lt;a class=&quot;&quot;&gt;Clinical Report &lt;span class=&quot;right quark c-iron t-light&quot;&gt;Title&lt;/span&gt;&lt;/a&gt;
+    &lt;/li&gt;
+&lt;/ul&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="tabs">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Tabs</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<dl class="tabs-button-group tabs" data-tab>
+    <dd class="tab-title active"><a href="#panel21" class="tab-button">Users</a></dd>
+    <dd class="tab-title"><a href="#panel22" class="tab-button">Revisions</a></dd>
+</dl>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;dl class=&quot;tabs-button-group tabs&quot; data-tab&gt;
+    &lt;dd class=&quot;tab-title active&quot;&gt;&lt;a href=&quot;#panel21&quot; class=&quot;tab-button&quot;&gt;Users&lt;/a&gt;&lt;/dd&gt;
+    &lt;dd class=&quot;tab-title&quot;&gt;&lt;a href=&quot;#panel22&quot; class=&quot;tab-button&quot;&gt;Revisions&lt;/a&gt;&lt;/dd&gt;
+&lt;/dl&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="task-actions">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Task Actions</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<section class="task-actions">
+    <div class="icon-bar three-up">
+        <a class="item">
+            <svg>
+                <use xlink:href="#i-alert"></use>
+            </svg>
+            <label>Delegate</label>
+        </a>
+
+        <a class="item" ng-click="toggleHistory()">
+            <svg>
+                <use xlink:href="#i-clock"></use>
+            </svg>
+        </a>
+
+        <a class="item" ng-click="toggleComments()">
+            <svg>
+                <use xlink:href="#i-comment"></use>
+            </svg>
+            <label>Comment</label>
+        </a>
+    </div>
+</section>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;section class=&quot;task-actions&quot;&gt;
+    &lt;div class=&quot;icon-bar three-up&quot;&gt;
+        &lt;a class=&quot;item&quot;&gt;
+            &lt;svg&gt;
+                &lt;use xlink:href=&quot;#i-alert&quot;&gt;&lt;/use&gt;
+            &lt;/svg&gt;
+            &lt;label&gt;Delegate&lt;/label&gt;
+        &lt;/a&gt;
+
+        &lt;a class=&quot;item&quot; ng-click=&quot;toggleHistory()&quot;&gt;
+            &lt;svg&gt;
+                &lt;use xlink:href=&quot;#i-clock&quot;&gt;&lt;/use&gt;
+            &lt;/svg&gt;
+        &lt;/a&gt;
+
+        &lt;a class=&quot;item&quot; ng-click=&quot;toggleComments()&quot;&gt;
+            &lt;svg&gt;
+                &lt;use xlink:href=&quot;#i-comment&quot;&gt;&lt;/use&gt;
+            &lt;/svg&gt;
+            &lt;label&gt;Comment&lt;/label&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="task-approve">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Task Approve</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<section class="task-approve">
+    <ul class="button-tinder">
+        <li>
+            <a href="#" class="button round alert ui-icon">
+                <svg class="i-bright">
+                    <use xlink:href="#i-close" />
+                </svg>
+            </a>
+            <span class="button-name"> 
+      Reject
+    </span>
+        </li>
+        <li>
+            <a href="#" class="button round success ui-icon">
+                <svg class="i-bright">
+                    <use xlink:href="#i-check" />
+                </svg>
+            </a>
+            <span class="button-name">
+      Approve
+    </span>
+        </li>
+    </ul>
+</section>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;section class=&quot;task-approve&quot;&gt;
+    &lt;ul class=&quot;button-tinder&quot;&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;button round alert ui-icon&quot;&gt;
+                &lt;svg class=&quot;i-bright&quot;&gt;
+                    &lt;use xlink:href=&quot;#i-close&quot; /&gt;
+                &lt;/svg&gt;
+            &lt;/a&gt;
+            &lt;span class=&quot;button-name&quot;&gt; 
+      Reject
+    &lt;/span&gt;
+        &lt;/li&gt;
+        &lt;li&gt;
+            &lt;a href=&quot;#&quot; class=&quot;button round success ui-icon&quot;&gt;
+                &lt;svg class=&quot;i-bright&quot;&gt;
+                    &lt;use xlink:href=&quot;#i-check&quot; /&gt;
+                &lt;/svg&gt;
+            &lt;/a&gt;
+            &lt;span class=&quot;button-name&quot;&gt;
+      Approve
+    &lt;/span&gt;
+        &lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/section&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="task-attachment">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Task Attachment</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<section class="task-attachment">
+    <a href="#" class="a-white">
+        <span class="icon-document ui-icon">
+      <svg>
+        <use xlink:href="#i-doc" />
+      </svg>
+    </span> document-name.pdf
+        <span class="ui-icon right">
+      <svg>
+        <use xlink:href="#i-east" />
+      </svg>
+    </span>
+    </a>
+</section>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;section class=&quot;task-attachment&quot;&gt;
+    &lt;a href=&quot;#&quot; class=&quot;a-white&quot;&gt;
+        &lt;span class=&quot;icon-document ui-icon&quot;&gt;
+      &lt;svg&gt;
+        &lt;use xlink:href=&quot;#i-doc&quot; /&gt;
+      &lt;/svg&gt;
+    &lt;/span&gt; document-name.pdf
+        &lt;span class=&quot;ui-icon right&quot;&gt;
+      &lt;svg&gt;
+        &lt;use xlink:href=&quot;#i-east&quot; /&gt;
+      &lt;/svg&gt;
+    &lt;/span&gt;
+    &lt;/a&gt;
+&lt;/section&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="task-header">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Task Header</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<header class="task-header">
+    <h2 class="task-status t-normal no-margin">For Approval</h2>
+</header>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;header class=&quot;task-header&quot;&gt;
+    &lt;h2 class=&quot;task-status t-normal no-margin&quot;&gt;For Approval&lt;/h2&gt;
+&lt;/header&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="task-header--rejected">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Task Header  Rejected</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<header class="task-header">
+    <span class="task-status label alert">Rejected</span>
+    <h1 class="task-title t-normal">
+    <a href="task-single.html">
+      Approve "document-name.pdf"
+    </a>
+  </h1>
+    <div class="byline">
+        <p class="byline-name">Susan B.
+            <span class="byline-date">yesterday at 4:24pm</span>
+        </p>
+    </div>
+</header>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;header class=&quot;task-header&quot;&gt;
+    &lt;span class=&quot;task-status label alert&quot;&gt;Rejected&lt;/span&gt;
+    &lt;h1 class=&quot;task-title t-normal&quot;&gt;
+    &lt;a href=&quot;task-single.html&quot;&gt;
+      Approve &quot;document-name.pdf&quot;
+    &lt;/a&gt;
+  &lt;/h1&gt;
+    &lt;div class=&quot;byline&quot;&gt;
+        &lt;p class=&quot;byline-name&quot;&gt;Susan B.
+            &lt;span class=&quot;byline-date&quot;&gt;yesterday at 4:24pm&lt;/span&gt;
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="task-header--success">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Task Header  Success</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<header class="task-header">
+    <span class="task-status label success">Success</span>
+    <h1 class="task-title t-normal">
+    <a href="task-single.html">
+      Approve "document-name.pdf"
+    </a>
+  </h1>
+    <div class="byline">
+        <p class="byline-name">Susan B.
+            <span class="byline-date">yesterday at 4:24pm</span>
+        </p>
+    </div>
+</header>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;header class=&quot;task-header&quot;&gt;
+    &lt;span class=&quot;task-status label success&quot;&gt;Success&lt;/span&gt;
+    &lt;h1 class=&quot;task-title t-normal&quot;&gt;
+    &lt;a href=&quot;task-single.html&quot;&gt;
+      Approve &quot;document-name.pdf&quot;
+    &lt;/a&gt;
+  &lt;/h1&gt;
+    &lt;div class=&quot;byline&quot;&gt;
+        &lt;p class=&quot;byline-name&quot;&gt;Susan B.
+            &lt;span class=&quot;byline-date&quot;&gt;yesterday at 4:24pm&lt;/span&gt;
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="task-list-header">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Task List Header</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<header class="task-header item-header">
+    <span class="task-status label radius secondary">For Approval</span>
+    <h1 class="task-title t-normal no-margin">
+    <a href="task-single.html">
+      Ibuprofen Case Study
+    </a>
+  </h1>
+    <div class="byline">
+        <p class="byline-name">Susan B.
+            <span class="byline-date">due at 4:24pm</span>
+        </p>
+    </div>
+</header>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;header class=&quot;task-header item-header&quot;&gt;
+    &lt;span class=&quot;task-status label radius secondary&quot;&gt;For Approval&lt;/span&gt;
+    &lt;h1 class=&quot;task-title t-normal no-margin&quot;&gt;
+    &lt;a href=&quot;task-single.html&quot;&gt;
+      Ibuprofen Case Study
+    &lt;/a&gt;
+  &lt;/h1&gt;
+    &lt;div class=&quot;byline&quot;&gt;
+        &lt;p class=&quot;byline-name&quot;&gt;Susan B.
+            &lt;span class=&quot;byline-date&quot;&gt;due at 4:24pm&lt;/span&gt;
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="task-reference">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Task Reference</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<section class="task-reference c-steel">
+    <span class="icon-count label radius bg-smoke c-steel">3</span> References
+    <span class="icon-more"></span>
+</section>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;section class=&quot;task-reference c-steel&quot;&gt;
+    &lt;span class=&quot;icon-count label radius bg-smoke c-steel&quot;&gt;3&lt;/span&gt; References
+    &lt;span class=&quot;icon-more&quot;&gt;&lt;/span&gt;
+&lt;/section&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="task-tools">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Task Tools</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<section class="task-tools">
+    <div class="icon-band">
+        <a class="item ui-icon">
+            <svg>
+                <use xlink:href="#i-info" />
+            </svg>
+        </a>
+    </div>
+</section>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;section class=&quot;task-tools&quot;&gt;
+    &lt;div class=&quot;icon-band&quot;&gt;
+        &lt;a class=&quot;item ui-icon&quot;&gt;
+            &lt;svg&gt;
+                &lt;use xlink:href=&quot;#i-info&quot; /&gt;
+            &lt;/svg&gt;
+        &lt;/a&gt;
+    &lt;/div&gt;
+&lt;/section&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="timeline-header">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Timeline Header</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<header class="timeline-header">
+    <h1 class="item-title t-light epsilon no-margin">
+    <a class="c-oil" href="task-single.html">
+      <span class="t-semi">Susan B.</span> revised <span class="t-semi">document-name</span><span class="label radius bg-steel">v1.0</span>
+    </a>
+  </h1>
+    <div class="byline">
+        <p class="byline-name no-margin">
+            <span class="byline-date">yesterday at 4:24pm</span>
+        </p>
+        <p class="no-margin"><em class="c-iron margin-top--half d-block">Because you follow Susan</em></p>
+    </div>
+</header>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;header class=&quot;timeline-header&quot;&gt;
+    &lt;h1 class=&quot;item-title t-light epsilon no-margin&quot;&gt;
+    &lt;a class=&quot;c-oil&quot; href=&quot;task-single.html&quot;&gt;
+      &lt;span class=&quot;t-semi&quot;&gt;Susan B.&lt;/span&gt; revised &lt;span class=&quot;t-semi&quot;&gt;document-name&lt;/span&gt;&lt;span class=&quot;label radius bg-steel&quot;&gt;v1.0&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/h1&gt;
+    &lt;div class=&quot;byline&quot;&gt;
+        &lt;p class=&quot;byline-name no-margin&quot;&gt;
+            &lt;span class=&quot;byline-date&quot;&gt;yesterday at 4:24pm&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class=&quot;no-margin&quot;&gt;&lt;em class=&quot;c-iron margin-top--half d-block&quot;&gt;Because you follow Susan&lt;/em&gt;&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="timeline-header--revised">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Timeline Header  Revised</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<header class="timeline-header">
+    <h1 class="item-title t-light epsilon no-margin">
+    <a class="c-oil" href="task-single.html">
+      <span class="t-semi">Susan B.</span> revised <span class="t-semi">document-name</span> <span class="label radius bg-reviewed">v1.0</span>
+    </a>
+  </h1>
+    <div class="byline">
+        <p class="byline-name no-margin">
+            <span class="byline-date">yesterday at 4:24pm</span>
+        </p>
+        <p class="no-margin"><em class="c-iron margin-top--half d-block">Because you favorited document name</em></p>
+    </div>
+</header>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;header class=&quot;timeline-header&quot;&gt;
+    &lt;h1 class=&quot;item-title t-light epsilon no-margin&quot;&gt;
+    &lt;a class=&quot;c-oil&quot; href=&quot;task-single.html&quot;&gt;
+      &lt;span class=&quot;t-semi&quot;&gt;Susan B.&lt;/span&gt; revised &lt;span class=&quot;t-semi&quot;&gt;document-name&lt;/span&gt; &lt;span class=&quot;label radius bg-reviewed&quot;&gt;v1.0&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/h1&gt;
+    &lt;div class=&quot;byline&quot;&gt;
+        &lt;p class=&quot;byline-name no-margin&quot;&gt;
+            &lt;span class=&quot;byline-date&quot;&gt;yesterday at 4:24pm&lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class=&quot;no-margin&quot;&gt;&lt;em class=&quot;c-iron margin-top--half d-block&quot;&gt;Because you favorited document name&lt;/em&gt;&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="timeline-header-activity">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Timeline Header Activity</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<header class="timeline-header">
+    <h1 class="item-title t-normal delta no-margin">
+    <a class="c-oil" href="task-single.html">
+      Case Study Name <span class="label radius bg-iron">v1.0</span>
+    </a>
+  </h1>
+    <div class="byline">
+        <p class="byline-name">
+            <span class="byline-date">
+        opened yesterday at 4:24pm
+      </span>
+        </p>
+    </div>
+</header>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;header class=&quot;timeline-header&quot;&gt;
+    &lt;h1 class=&quot;item-title t-normal delta no-margin&quot;&gt;
+    &lt;a class=&quot;c-oil&quot; href=&quot;task-single.html&quot;&gt;
+      Case Study Name &lt;span class=&quot;label radius bg-iron&quot;&gt;v1.0&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/h1&gt;
+    &lt;div class=&quot;byline&quot;&gt;
+        &lt;p class=&quot;byline-name&quot;&gt;
+            &lt;span class=&quot;byline-date&quot;&gt;
+        opened yesterday at 4:24pm
+      &lt;/span&gt;
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="timeline-header-activity-user">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Timeline Header Activity User</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<header class="timeline-header">
+    <h1 class="item-title t-normal delta no-margin">
+    <a class="c-oil" href="task-single.html">
+      Specification Name <span class="label radius bg-iron">v2.0</span>
+    </a>
+  </h1>
+    <div class="byline">
+        <p class="byline-name">
+            <span class="byline-date">
+        <a class="byline-author">Dominic G.</a>
+        opened Aug 15th 2015
+      </span>
+        </p>
+    </div>
+</header>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;header class=&quot;timeline-header&quot;&gt;
+    &lt;h1 class=&quot;item-title t-normal delta no-margin&quot;&gt;
+    &lt;a class=&quot;c-oil&quot; href=&quot;task-single.html&quot;&gt;
+      Specification Name &lt;span class=&quot;label radius bg-iron&quot;&gt;v2.0&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/h1&gt;
+    &lt;div class=&quot;byline&quot;&gt;
+        &lt;p class=&quot;byline-name&quot;&gt;
+            &lt;span class=&quot;byline-date&quot;&gt;
+        &lt;a class=&quot;byline-author&quot;&gt;Dominic G.&lt;/a&gt;
+        opened Aug 15th 2015
+      &lt;/span&gt;
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="timeline-header-notification">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Timeline Header Notification</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<header class="timeline-header">
+    <h1 class="item-title t-light epsilon no-margin">
+    <a class="c-charcoal" href="task-single.html">
+      You opened <span class="t-semi">Dolormin Spec</span>
+    </a>
+  </h1>
+    <div class="byline">
+        <p class="byline-name">
+            <span class="byline-date">
+        yesterday at 4:24pm <span class="label radius bg-steel">v1.0</span>
+            </span>
+        </p>
+    </div>
+</header>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;header class=&quot;timeline-header&quot;&gt;
+    &lt;h1 class=&quot;item-title t-light epsilon no-margin&quot;&gt;
+    &lt;a class=&quot;c-charcoal&quot; href=&quot;task-single.html&quot;&gt;
+      You opened &lt;span class=&quot;t-semi&quot;&gt;Dolormin Spec&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/h1&gt;
+    &lt;div class=&quot;byline&quot;&gt;
+        &lt;p class=&quot;byline-name&quot;&gt;
+            &lt;span class=&quot;byline-date&quot;&gt;
+        yesterday at 4:24pm &lt;span class=&quot;label radius bg-steel&quot;&gt;v1.0&lt;/span&gt;
+            &lt;/span&gt;
+        &lt;/p&gt;
+    &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+<div class="f-item-group" id="timeline-header-notification--revised">
+
+	<div class="f-item-heading-group" data-f-toggle="labels">
+		<h2 class="f-item-heading">Timeline Header Notification  Revised</h2>
+		<div class="f-item-controls">
+			
+			<span class="f-control f-icon" data-f-toggle-control="code" title="Toggle Code">
+				<svg>
+					<use xlink:href="#f-icon-code" />
+				</svg>
+			</span>
+		</div>
+	</div>
+<div class="f-item-preview">
+	<header class="timeline-header">
+    <h1 class="item-title t-light epsilon no-margin">
+    <a class="c-charcoal" href="task-single.html">
+      You favorited <span class="t-semi">Paracetamol Spec</span>
+    </a>
+  </h1>
+    <div class="byline">
+        <p class="byline-name no-margin">
+            <span class="byline-date">
+        yesterday at 4:24pm <span class="label radius bg-reviewed">v1.0</span>
+            </span>
+        </p>
+        <p class="no-margin"><em class="c-iron margin-top--half d-block">This document has been revised.</em></p>
+    </div>
+</header>
+</div>
+<div class="f-item-code f-item-hidden" data-f-toggle="code">
+	<pre><code class="language-markup">&lt;header class=&quot;timeline-header&quot;&gt;
+    &lt;h1 class=&quot;item-title t-light epsilon no-margin&quot;&gt;
+    &lt;a class=&quot;c-charcoal&quot; href=&quot;task-single.html&quot;&gt;
+      You favorited &lt;span class=&quot;t-semi&quot;&gt;Paracetamol Spec&lt;/span&gt;
+    &lt;/a&gt;
+  &lt;/h1&gt;
+    &lt;div class=&quot;byline&quot;&gt;
+        &lt;p class=&quot;byline-name no-margin&quot;&gt;
+            &lt;span class=&quot;byline-date&quot;&gt;
+        yesterday at 4:24pm &lt;span class=&quot;label radius bg-reviewed&quot;&gt;v1.0&lt;/span&gt;
+            &lt;/span&gt;
+        &lt;/p&gt;
+        &lt;p class=&quot;no-margin&quot;&gt;&lt;em class=&quot;c-iron margin-top--half d-block&quot;&gt;This document has been revised.&lt;/em&gt;&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/header&gt;</code></pre>
+</div>
+
+
+</div>
+
+
+
+		</div>
+	<script src="/assets/fabricator/scripts/f.js"></script>
+
+	<!-- toolkit scripts -->
+	<script src="/assets/toolkit/scripts/toolkit.js"></script>
+
+</body>
+</html>

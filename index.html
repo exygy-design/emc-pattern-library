@@ -1,0 +1,919 @@
+<!doctype html>
+<html>
+<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<title>Base | Fabricator</title>
+	
+	<link rel="stylesheet" href="/assets/fabricator/styles/f.css">
+
+	<!-- toolkit styles -->
+	<link rel="stylesheet" href="/assets/fabricator/styles/f.css">
+	<link rel="stylesheet" href="/assets/toolkit/styles/toolkit.css">
+	<!-- /toolkit styles -->
+
+</head>
+<body>
+	<!-- app icons -->
+	<svg style="display: none;">
+	  <symbol id="i-comment" viewBox="0 0 20 20">
+	    <path d="M18 6v7c0 1.1-0.9 2-2 2h-4v3l-4-3h-4c-1.101 0-2-0.9-2-2v-7c0-1.1 0.899-2 2-2h12c1.1 0 2 0.9 2 2z"></path>
+	  </symbol>
+	
+	  <symbol id="i-arrow-right" viewBox="0 0 100 100">
+	    <path d="M50.868,78.016l36.418-26.055c0.66-0.471,1.049-1.233,1.051-2.043c0-0.006,0-0.006,0-0.006
+	    c-0.002-0.815-0.396-1.575-1.059-2.048L50.86,21.977c-0.767-0.546-1.776-0.616-2.612-0.183c-0.835,0.426-1.361,1.292-1.361,2.236
+	    v12.183l-32.709-0.001c-1.39,0-2.515,1.125-2.515,2.516l0.001,22.541c-0.001,1.389,1.124,2.515,2.516,2.516l32.706,0v12.187
+	    c0,0.94,0.53,1.803,1.366,2.237C49.089,78.641,50.1,78.567,50.868,78.016z"/>
+	  </symbol>
+	
+	  <symbol id="i-alert" viewBox="0 0 20 20">
+	    <path d="M12 11.874v4.357l7-6.69-7-6.572v3.983c-8.775 0-11 9.732-11 9.732 2.484-4.388 6.237-4.81 11-4.81z"></path>
+	  </symbol>
+	
+	  <symbol id="i-info" viewBox="0 0 20 20">
+	    <path d="M10 0.4c-5.303 0-9.601 4.298-9.601 9.6 0 5.303 4.298 9.601 9.601 9.601 5.301 0 9.6-4.298 9.6-9.601s-4.299-9.6-9.6-9.6zM10.896 3.866c0.936 0 1.211 0.543 1.211 1.164 0 0.775-0.62 1.492-1.679 1.492-0.886 0-1.308-0.445-1.282-1.182 0-0.621 0.519-1.474 1.75-1.474zM8.498 15.75c-0.64 0-1.107-0.389-0.66-2.094l0.733-3.025c0.127-0.484 0.148-0.678 0-0.678-0.191 0-1.022 0.334-1.512 0.664l-0.319-0.523c1.555-1.299 3.343-2.061 4.108-2.061 0.64 0 0.746 0.756 0.427 1.92l-0.84 3.18c-0.149 0.562-0.085 0.756 0.064 0.756 0.192 0 0.82-0.232 1.438-0.719l0.362 0.486c-1.513 1.512-3.162 2.094-3.801 2.094z"></path>
+	  </symbol>
+	
+	  <symbol id="i-star" viewBox="0 0 20 20">
+	    <path d="M10 14.375l-5.156 3.125 1.367-5.859-4.531-3.945 5.977-0.508 2.344-5.508 2.344 5.508 5.977 0.508-4.531 3.945 1.367 5.859z"></path>
+	  </symbol>
+	
+	  <symbol id="i-menu" viewBox="0 0 20 20">
+	    <path d="M16.4 9h-12.8c-0.552 0-0.6 0.447-0.6 1s0.048 1 0.6 1h12.8c0.552 0 0.6-0.447 0.6-1s-0.048-1-0.6-1zM16.4 13h-12.8c-0.552 0-0.6 0.447-0.6 1s0.048 1 0.6 1h12.8c0.552 0 0.6-0.447 0.6-1s-0.048-1-0.6-1zM3.6 7h12.8c0.552 0 0.6-0.447 0.6-1s-0.048-1-0.6-1h-12.8c-0.552 0-0.6 0.447-0.6 1s0.048 1 0.6 1z"></path>
+	  </symbol>
+	
+	  <symbol id="i-cross" viewBox="0 0 20 20">
+	    <path d="M14.348 14.849c-0.469 0.469-1.229 0.469-1.697 0l-2.651-3.030-2.651 3.029c-0.469 0.469-1.229 0.469-1.697 0-0.469-0.469-0.469-1.229 0-1.697l2.758-3.15-2.759-3.152c-0.469-0.469-0.469-1.228 0-1.697s1.228-0.469 1.697 0l2.652 3.031 2.651-3.031c0.469-0.469 1.228-0.469 1.697 0s0.469 1.229 0 1.697l-2.758 3.152 2.758 3.15c0.469 0.469 0.469 1.229 0 1.698z"></path>
+	  </symbol>
+	
+	  <symbol id="i-search" viewBox="0 0 20 20">
+	    <path d="M17.545 15.467l-3.779-3.779c0.57-0.935 0.898-2.035 0.898-3.21 0-3.417-2.961-6.377-6.378-6.377s-6.186 2.769-6.186 6.186c0 3.416 2.961 6.377 6.377 6.377 1.137 0 2.2-0.309 3.115-0.844l3.799 3.801c0.372 0.371 0.975 0.371 1.346 0l0.943-0.943c0.371-0.371 0.236-0.84-0.135-1.211zM4.004 8.287c0-2.366 1.917-4.283 4.282-4.283s4.474 2.107 4.474 4.474c0 2.365-1.918 4.283-4.283 4.283s-4.473-2.109-4.473-4.474z"></path>
+	  </symbol>
+	
+	  <symbol id="i-doc" viewBox="0 0 20 20">
+	    <path d="M13.864 0h-10.227c-1.004 0-1.818 0.815-1.818 1.818v16.364c0 1.004 0.815 1.818 1.818 1.818h12.727c1.004 0 1.818-0.815 1.818-1.818v-13.864l-4.318-4.318zM13.636 2.248l2.276 2.297h-2.276v-2.297zM16.364 18.182h-12.727v-16.364h8.182v4.545h4.545v11.818z"></path>
+	  </symbol>
+	
+	  <symbol id="i-clock" viewBox="0 0 20 20">
+	    <path d="M11 1.799c-4.445 0-8.061 3.562-8.169 7.996v0.205h-2.372l3.594 3.894 3.494-3.894h-2.672v-0.205c0.107-3.303 2.808-5.945 6.125-5.945 3.386 0 6.131 2.754 6.131 6.15s-2.745 6.15-6.131 6.15c-1.357 0-2.611-0.445-3.627-1.193l-1.406 1.504c1.388 1.088 3.135 1.738 5.033 1.738 4.515 0 8.174-3.67 8.174-8.199s-3.659-8.201-8.174-8.201zM10 5v5c0 0.13 0.027 0.26 0.077 0.382s0.124 0.233 0.216 0.325l3.2 3.2c0.283-0.183 0.55-0.389 0.787-0.628l-2.28-2.279v-6h-2z"></path>
+	  </symbol>
+	
+	  <symbol id="i-reject" viewBox="0 0 20 20">
+	    <path d="M6.352 12.638c0.133 0.356-3.539 3.634-1.397 6.291 0.501 0.621 2.201-2.975 4.615-4.602 1.331-0.899 4.43-2.811 4.43-3.868v-6.842c0-1.271-4.914-2.617-8.648-2.617-1.369 0-3.352 8.576-3.352 9.939 0 1.367 4.221 1.343 4.352 1.699zM15 12.543c0.658 0 3-0.4 3-3.123v-4.848c0-2.721-2.342-3.021-3-3.021-0.657 0 1 0.572 1 2.26v6.373c0 1.768-1.657 2.359-1 2.359z"></path>
+	  </symbol>
+	
+	  <symbol id="i-check" viewBox="0 0 20 20">  
+	    <path d="M8.294 16.998c-0.435 0-0.847-0.203-1.111-0.553l-3.573-4.721c-0.465-0.613-0.344-1.486 0.27-1.951 0.615-0.467 1.488-0.344 1.953 0.27l2.351 3.104 5.911-9.492c0.407-0.652 1.267-0.852 1.921-0.445s0.854 1.266 0.446 1.92l-6.984 11.21c-0.242 0.391-0.661 0.635-1.12 0.656-0.022 0.002-0.042 0.002-0.064 0.002z"></path>
+	  </symbol>
+	
+	  <symbol id="i-more" viewBox="0 0 20 20">  
+	    <path d="M10.001 7.8c-1.215 0-2.201 0.985-2.201 2.2s0.986 2.2 2.201 2.2c1.215 0 2.199-0.985 2.199-2.2s-0.984-2.2-2.199-2.2zM3.001 7.8c-1.215 0-2.201 0.985-2.201 2.2s0.986 2.2 2.201 2.2c1.215 0 2.199-0.986 2.199-2.2s-0.984-2.2-2.199-2.2zM17.001 7.8c-1.215 0-2.201 0.985-2.201 2.2s0.986 2.2 2.201 2.2c1.215 0 2.199-0.985 2.199-2.2s-0.984-2.2-2.199-2.2z"></path>
+	  </symbol>
+	
+	  <symbol id="i-link" viewBox="0 0 20 20">
+	  <path d="M7.859 14.691l-0.81 0.805c-0.701 0.695-1.843 0.695-2.545 0-0.336-0.334-0.521-0.779-0.521-1.252s0.186-0.916 0.521-1.252l2.98-2.955c0.617-0.613 1.779-1.515 2.626-0.675 0.389 0.386 1.016 0.384 1.403-0.005 0.385-0.389 0.383-1.017-0.006-1.402-1.438-1.428-3.566-1.164-5.419 0.675l-2.98 2.956c-0.715 0.709-1.108 1.654-1.108 2.658 0 1.006 0.394 1.949 1.108 2.658 0.736 0.73 1.702 1.096 2.669 1.096s1.934-0.365 2.669-1.096l0.811-0.805c0.389-0.385 0.391-1.012 0.005-1.4s-1.014-0.39-1.403-0.006zM16.891 3.207c-1.547-1.534-3.709-1.617-5.139-0.197l-1.009 1.002c-0.389 0.386-0.392 1.013-0.006 1.401 0.386 0.389 1.013 0.391 1.402 0.005l1.010-1.001c0.74-0.736 1.711-0.431 2.346 0.197 0.336 0.335 0.522 0.779 0.522 1.252s-0.186 0.917-0.522 1.251l-3.18 3.154c-1.454 1.441-2.136 0.766-2.427 0.477-0.389-0.386-1.016-0.383-1.401 0.005s-0.384 1.017 0.005 1.401c0.668 0.662 1.43 0.99 2.228 0.99 0.977 0 2.010-0.492 2.993-1.467l3.18-3.153c0.712-0.71 1.107-1.654 1.107-2.658s-0.395-1.949-1.109-2.659z"></path>
+	  </symbol>
+	
+	  <symbol id="i-download" viewBox="0 0 24 24">
+	<path d="M21 3.516q0.797 0 1.406 0.586t0.609 1.383v14.016q0 0.797-0.609 1.406t-1.406 0.609h-18q-0.797 0-1.406-0.609t-0.609-1.406v-14.016q0-0.797 0.609-1.383t1.406-0.586h6v1.969h-6v14.016h18v-14.016h-6v-1.969h6zM12 16.5l-3.984-3.984h3v-9h1.969v9h3z"></path>
+	  </symbol>
+	
+	  <symbol id="i-comment" viewBox="0 0 20 20">
+	  <path d="M18 6v7c0 1.1-0.9 2-2 2h-4v3l-4-3h-4c-1.101 0-2-0.9-2-2v-7c0-1.1 0.899-2 2-2h12c1.1 0 2 0.9 2 2z"></path>
+	  </symbol>
+	
+	  <symbol id="i-eye" viewBox="0 0 24 24">
+	  <path d="M12 9q1.219 0 2.109 0.891t0.891 2.109-0.891 2.109-2.109 0.891-2.109-0.891-0.891-2.109 0.891-2.109 2.109-0.891zM12 17.016q2.063 0 3.539-1.477t1.477-3.539-1.477-3.539-3.539-1.477-3.539 1.477-1.477 3.539 1.477 3.539 3.539 1.477zM12 4.5q3.703 0 6.703 2.063t4.313 5.438q-1.313 3.375-4.313 5.438t-6.703 2.063-6.703-2.063-4.313-5.438q1.313-3.375 4.313-5.438t6.703-2.063z"></path>
+	  </symbol>
+	
+	  <symbol id="i-down" viewBox="0 0 20 20">
+	  <path d="M4.516 7.548c0.436-0.446 1.043-0.481 1.576 0l3.908 3.747 3.908-3.747c0.533-0.481 1.141-0.446 1.574 0 0.436 0.445 0.408 1.197 0 1.615-0.406 0.418-4.695 4.502-4.695 4.502-0.217 0.223-0.502 0.335-0.787 0.335s-0.57-0.112-0.789-0.335c0 0-4.287-4.084-4.695-4.502s-0.436-1.17 0-1.615z"></path>
+	  </symbol>
+	
+	  <symbol id="i-hub" viewBox="0 0 24 24">
+	  <path d="M17.016 15.984h3.984v5.016h-5.016v-3.047l-3.984-4.219-3.984 4.219v3.047h-5.016v-5.016h3.984l4.031-3.984v-3.188q-0.891-0.328-1.453-1.078t-0.563-1.734q0-1.219 0.891-2.109t2.109-0.891 2.109 0.891 0.891 2.109q0 0.984-0.563 1.734t-1.453 1.078v3.188z"></path>
+	  </symbol>
+	
+	  <symbol id="i-task" viewBox="0 0 24 24">
+	  <path d="M18.174 1.826c-1.102-1.102-2.082-0.777-2.082-0.777l-8.639 8.632-1.453 4.319 4.317-1.454 8.634-8.638c0 0 0.324-0.98-0.777-2.082zM10.605 11.605l-0.471 0.47-1.473 0.5c-0.104-0.24-0.234-0.477-0.498-0.74s-0.5-0.394-0.74-0.498l0.5-1.473 0.471-0.47c0 0 0.776-0.089 1.537 0.673 0.762 0.761 0.674 1.538 0.674 1.538zM16 17h-13v-13h5l2-2h-7c-1.1 0-2 0.9-2 2v13c0 1.1 0.9 2 2 2h13c1.1 0 2-0.9 2-2v-7l-2 2v5z"></path>
+	  </symbol>
+	
+	  <symbol id="i-close" viewBox="0 0 20 20">
+	  <path d="M15.82 5.352l-4.648 4.648 4.648 4.648-1.172 1.172-4.648-4.648-4.648 4.648-1.172-1.172 4.648-4.648-4.648-4.648 1.172-1.172 4.648 4.648 4.648-4.648z"></path>
+	  </symbol>
+	
+	  <symbol id="i-west" viewBox="0 0 20 20">
+	  <path d="M12.452 4.516c0.446 0.436 0.481 1.043 0 1.576l-3.747 3.908 3.747 3.908c0.481 0.533 0.446 1.141 0 1.574-0.445 0.436-1.197 0.408-1.615 0-0.418-0.406-4.502-4.695-4.502-4.695-0.223-0.217-0.335-0.502-0.335-0.787s0.112-0.57 0.335-0.789c0 0 4.084-4.287 4.502-4.695s1.17-0.436 1.615 0z"></path>
+	  </symbol>
+	
+	  <symbol id="i-east" viewBox="0 0 20 20">
+	  <path d="M9.163 4.516c0.418 0.408 4.502 4.695 4.502 4.695 0.223 0.219 0.335 0.504 0.335 0.789s-0.112 0.57-0.335 0.787c0 0-4.084 4.289-4.502 4.695-0.418 0.408-1.17 0.436-1.615 0-0.446-0.434-0.481-1.041 0-1.574l3.747-3.908-3.747-3.908c-0.481-0.533-0.446-1.141 0-1.576s1.197-0.409 1.615 0z"></path>
+	  </symbol>
+	
+	  <symbol id="i-related" viewBox="0 0 32 32">
+	  <path d="M30.080 20h-1.6l-11.040-6.24v-1.28h2.080c0.8 0 1.44-0.64 1.44-1.28v-9.44c0-0.8-0.64-1.28-1.44-1.28h-7.2c-0.8 0-1.44 0.64-1.44 1.28v9.44c0 0.8 0.64 1.28 1.44 1.28h2.080v1.28l-11.36 6.24h-1.44c-0.8 0-1.44 0.64-1.44 1.28v9.12c0 0.8 0.64 1.28 1.44 1.28h7.36c0.8 0 1.44-0.64 1.44-1.28v-9.12c0-0.8-0.64-1.28-1.44-1.28h-1.28l8.16-4c0 0 0 0 0.16 0s0 0 0.16 0l8.16 4h-1.6c-0.8 0-1.44 0.64-1.44 1.28v9.12c0 0.8 0.64 1.28 1.44 1.28h7.36c0.8 0 1.44-0.64 1.44-1.28v-9.12c0.16-0.64-0.64-1.28-1.44-1.28z"></path>
+	  </symbol>
+	
+	  <symbol id="i-word" viewBox="0 0 20 20">
+	  <path d="M12.496 9.295h0.863l-0.996 4.418-1.295-6.211h-2.081l-1.506 6.211-1.129-6.211h-2.176l2.209 9.998h2.126l1.49-5.912 1.333 5.912h1.96l2.532-9.998h-3.329v1.794z"></path>
+	  <path d="M17.926 4.474c-0.434-0.592-1.039-1.283-1.703-1.947s-1.356-1.269-1.947-1.703c-1.007-0.739-1.496-0.824-1.776-0.824h-9.688c-0.862 0-1.563 0.701-1.563 1.563v16.875c0 0.862 0.701 1.563 1.563 1.563h14.375c0.862 0 1.563-0.701 1.563-1.563v-12.188c0-0.28-0.085-0.769-0.824-1.776v0zM15.339 3.411c0.6 0.6 1.070 1.141 1.418 1.589h-3.007v-3.007c0.449 0.347 0.99 0.818 1.589 1.417v0zM17.5 18.438c0 0.169-0.143 0.313-0.313 0.313h-14.375c-0.169 0-0.313-0.143-0.313-0.313v-16.875c0-0.169 0.143-0.313 0.313-0.313 0 0 9.687-0 9.688 0v4.375c0 0.345 0.28 0.625 0.625 0.625h4.375v12.188z"></path>
+	  </symbol>
+	
+	  <symbol id="i-pdf" viewBox="0 0 20 20">
+	    <path d="M16.446 11.513c-0.267-0.263-0.858-0.402-1.757-0.414-0.609-0.007-1.342 0.047-2.113 0.155-0.345-0.199-0.701-0.416-0.98-0.677-0.751-0.701-1.378-1.675-1.769-2.746 0.025-0.1 0.047-0.188 0.067-0.278 0 0 0.423-2.404 0.311-3.216-0.015-0.111-0.025-0.144-0.055-0.23l-0.037-0.094c-0.115-0.265-0.341-0.547-0.695-0.531l-0.213-0.007c-0.395 0-0.716 0.202-0.801 0.503-0.257 0.946 0.008 2.361 0.488 4.194l-0.123 0.299c-0.344 0.837-0.774 1.681-1.154 2.425l-0.049 0.097c-0.4 0.782-0.762 1.446-1.091 2.008l-0.339 0.179c-0.025 0.013-0.606 0.321-0.743 0.403-1.157 0.691-1.924 1.475-2.052 2.098-0.040 0.199-0.010 0.453 0.196 0.571l0.328 0.165c0.142 0.071 0.293 0.107 0.446 0.107 0.824 0 1.781-1.027 3.1-3.327 1.522-0.496 3.255-0.907 4.774-1.135 1.157 0.652 2.581 1.104 3.479 1.104 0.16 0 0.297-0.015 0.409-0.045 0.172-0.046 0.318-0.144 0.406-0.277 0.174-0.262 0.21-0.624 0.162-0.994-0.014-0.11-0.102-0.246-0.197-0.338zM4.134 15.899c0.15-0.411 0.745-1.224 1.625-1.944 0.055-0.045 0.192-0.173 0.316-0.291-0.92 1.467-1.536 2.052-1.941 2.236zM9.344 3.9c0.265 0 0.416 0.668 0.428 1.294s-0.134 1.066-0.316 1.391c-0.15-0.481-0.223-1.24-0.223-1.736 0 0-0.011-0.948 0.111-0.948v0zM7.79 12.451c0.185-0.33 0.377-0.679 0.573-1.048 0.478-0.905 0.78-1.612 1.005-2.194 0.447 0.814 1.005 1.506 1.66 2.061 0.082 0.069 0.168 0.139 0.259 0.208-1.332 0.264-2.484 0.584-3.497 0.974v0zM16.189 12.376c-0.081 0.051-0.314 0.080-0.463 0.080-0.483 0-1.080-0.221-1.917-0.579 0.322-0.024 0.616-0.036 0.881-0.036 0.484 0 0.627-0.002 1.101 0.119s0.479 0.366 0.398 0.417v0z"></path>
+	    <path d="M17.926 4.474c-0.434-0.592-1.039-1.283-1.703-1.947s-1.356-1.269-1.947-1.703c-1.007-0.739-1.496-0.824-1.776-0.824h-9.688c-0.862 0-1.563 0.701-1.563 1.563v16.875c0 0.862 0.701 1.563 1.563 1.563h14.375c0.862 0 1.563-0.701 1.563-1.563v-12.188c0-0.28-0.085-0.769-0.824-1.776v0zM15.339 3.411c0.6 0.6 1.070 1.141 1.418 1.589h-3.007v-3.007c0.449 0.347 0.99 0.818 1.589 1.417v0zM17.5 18.438c0 0.169-0.143 0.313-0.313 0.313h-14.375c-0.169 0-0.313-0.143-0.313-0.313v-16.875c0-0.169 0.143-0.313 0.313-0.313 0 0 9.687-0 9.688 0v4.375c0 0.345 0.28 0.625 0.625 0.625h4.375v12.188z"></path>
+	  </symbol>
+	</svg>
+	<!-- /fabricator icons -->
+	
+		<!-- fabricator icons -->
+		<svg style="display: none;">
+			<symbol id="f-icon-code" viewBox="0 0 512 512">
+				<path d="M377.3 121.3l-40.5 40.4 94.4 94.3-94.4 94.3 40.5 40.4L512 256zM134.7 121.3L0 256l134.7 134.7 40.5-40.4L80.8 256l94.4-94.3zM281.8 103.8zM230.183 408.16l-29.233-7.97 80.85-296.484 29.234 7.972z"/>
+			</symbol>
+			<symbol id="f-icon-notes" viewBox="0 0 512 512">
+				<path d="M443.8 0H68.2C30.6 0 0 30.5 0 68v264.2c0 16.6 8.9 29.5 25.9 37.5 15.3 7.2 33.1 8.4 40.1 8.5V512l201.6-134h176.1c37.6 0 68.2-30.3 68.2-67.8V68c.1-37.5-30.5-68-68.1-68zM114 438V330H68.2c-11.1 0-19.2-8.8-19.2-19.8V68c0-11 8.2-20 19.2-20h375.5c11.1 0 19.2 9 19.2 20v242.2c0 11-8.2 19.8-19.2 19.8H244.2L114 438z"/>
+			</symbol>
+			<symbol id="f-icon-labels" viewBox="0 0 512 512">
+				<path d="M304 280c0 13.2-10.8 24-24 24h-48c-13.2 0-24-10.8-24-24v-48c0-13.2 10.8-24 24-24h48c13.2 0 24 10.8 24 24v48zM464 280c0 13.2-10.8 24-24 24h-48c-13.2 0-24-10.8-24-24v-48c0-13.2 10.8-24 24-24h48c13.2 0 24 10.8 24 24v48zM144 280c0 13.2-10.8 24-24 24H72c-13.2 0-24-10.8-24-24v-48c0-13.2 10.8-24 24-24h48c13.2 0 24 10.8 24 24v48z"/>
+			</symbol>
+			<symbol id="f-icon-menu" viewBox="0 0 512 512">
+				<path d="M512 100c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12V76c0-6.6 5.4-12 12-12h488c6.6 0 12 5.4 12 12v24zM512 212c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12v-24c0-6.6 5.4-12 12-12h488c6.6 0 12 5.4 12 12v24zM512 324c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12v-24c0-6.6 5.4-12 12-12h488c6.6 0 12 5.4 12 12v24zM512 436c0 6.6-5.4 12-12 12H12c-6.6 0-12-5.4-12-12v-24c0-6.6 5.4-12 12-12h488c6.6 0 12 5.4 12 12v24z"/>
+			</symbol>
+			<symbol id="f-icon-settings" viewBox="0 0 512 512">
+				<path d="M256 377.3c-67.5 0-121.6-53.9-121.6-121.3s54-121.3 121.6-121.3S377.6 188.6 377.6 256 323.5 377.3 256 377.3zm0-215.6c-52.7 0-94.6 41.8-94.6 94.3s41.9 94.3 94.6 94.3 94.6-41.8 94.6-94.3-41.9-94.3-94.6-94.3zM293.2 512h-72.9L200 450c-13.5-4-27-9.4-39.2-16.2l-59.4 29.6L50 412.3 79.7 353c-6.8-12.1-12.2-25.6-16.2-39.1L0 292.4v-72.8l62.1-20.2c4.1-13.5 9.5-26.9 16.2-39.1L48.6 101 100 49.9l59.4 29.6c12.2-6.7 25.7-12.1 39.2-16.2L220.2 0h72.9l20.3 62c13.5 4 27 9.4 39.2 16.2L412 48.5l51.3 51.2-29.7 59.3c6.8 12.1 12.2 25.6 16.2 39.1l62.1 20.2V291l-62.1 20.2c-4.1 13.5-9.5 26.9-16.2 39.1l29.7 59.3-51.3 51.2-59.4-29.6c-12.2 6.7-25.7 12.1-39.2 16.2L293.2 512zm-54.1-26.9h35.1l18.9-57.9 6.8-1.3c16.2-4 31.1-10.8 45.9-18.9l6.8-4 54 26.9 24.3-24.3-27-53.9 4.1-6.7c8.1-13.5 14.9-29.6 18.9-45.8l1.4-6.7 58.1-18.9v-35l-58.1-18.9-1.4-6.7c-4.1-16.2-10.8-31-18.9-45.8l-4.1-6.7 27-53.9-24.3-24.3-54 26.9-6.8-4c-14.8-8.2-29.7-14.9-45.9-19l-6.8-1.3L274.2 27h-35.1l-18.9 57.9-6.8 1.3c-16.2 4-31.1 10.8-45.9 18.9l-6.8 4-54-26.9-24.3 24.3 27 53.9-4.1 6.7c-8.1 13.5-14.9 29.6-18.9 45.8l-1.4 6.7-58 18.9v35l58.1 18.9 1.4 6.7c4.1 16.2 10.8 31 18.9 45.8l4.1 6.7-27 53.9 24.3 24.3 54-26.9 6.8 4c14.9 8.1 29.7 14.8 45.9 18.9l6.8 1.3 18.8 58z"/>
+			</symbol>
+		
+			<symbol id="i-comment" viewBox="0 0 100 100">
+				<path d="M88.466,16.936c-0.172-1.703-1.592-3.036-3.34-3.036H14.781v0.009c-1.705,0.047-3.079,1.355-3.247,3.027H11.5v56.342h0.068
+				c0.305,1.512,1.622,2.65,3.214,2.694v0.009h11.564v6.744c0,1.864,1.51,3.374,3.374,3.374c1.165,0,2.192-0.591,2.798-1.49
+				l8.629-8.629h43.979c1.634,0,2.995-1.161,3.306-2.703H88.5V16.936H88.466z"/>
+			</symbol>
+		
+			<symbol id="i-arrow-right" viewBox="0 0 100 100">
+				<path d="M50.868,78.016l36.418-26.055c0.66-0.471,1.049-1.233,1.051-2.043c0-0.006,0-0.006,0-0.006
+				c-0.002-0.815-0.396-1.575-1.059-2.048L50.86,21.977c-0.767-0.546-1.776-0.616-2.612-0.183c-0.835,0.426-1.361,1.292-1.361,2.236
+				v12.183l-32.709-0.001c-1.39,0-2.515,1.125-2.515,2.516l0.001,22.541c-0.001,1.389,1.124,2.515,2.516,2.516l32.706,0v12.187
+				c0,0.94,0.53,1.803,1.366,2.237C49.089,78.641,50.1,78.567,50.868,78.016z"/>
+			</symbol>
+		
+			<symbol id="i-alert" viewBox="0 0 100 100">
+				<path d="M91.17,81.374l0.006-0.004l-0.139-0.24c-0.068-0.128-0.134-0.257-0.216-0.375l-37.69-65.283
+				c-0.611-1.109-1.776-1.87-3.133-1.87c-1.47,0-2.731,0.887-3.285,2.153l-0.004-0.002L9.312,80.529l0.036,0.021
+				c-0.505,0.618-0.82,1.397-0.82,2.257c0,1.982,1.607,3.59,3.588,3.59h0h75.767v0c1.982,0,3.589-1.607,3.589-3.589
+				C91.472,82.297,91.362,81.814,91.17,81.374z M50.035,79.617c-2.874,0-5.201-2.257-5.201-5.13c0-2.874,2.326-5.2,5.201-5.2
+				c2.803,0,5.13,2.325,5.13,5.2C55.166,77.36,52.838,79.617,50.035,79.617z M55.165,34.25v28.299h-0.002
+				c0,0.005,0.002,0.01,0.002,0.016c0,1.173-0.95,2.094-2.094,2.094c-0.005,0-0.009-0.001-0.014-0.001v0.001h-6.093
+				c-1.174,0-2.123-0.921-2.123-2.094c0-0.005,0.002-0.01,0.002-0.016h-0.002V34.326c-0.001-0.026-0.008-0.051-0.008-0.077
+				c0-1.117,0.865-1.996,1.935-2.078v-0.016h6.288v0.001c1.149,0.007,2.074,0.897,2.103,2.039h0.005v0.053V34.25
+				C55.166,34.25,55.165,34.25,55.165,34.25z"/>
+			</symbol>
+		
+			<symbol id="i-info" viewBox="0 0 20 20">
+				<path d="M10 0.4c-5.303 0-9.601 4.298-9.601 9.6 0 5.303 4.298 9.601 9.601 9.601 5.301 0 9.6-4.298 9.6-9.601s-4.299-9.6-9.6-9.6zM10.896 3.866c0.936 0 1.211 0.543 1.211 1.164 0 0.775-0.62 1.492-1.679 1.492-0.886 0-1.308-0.445-1.282-1.182 0-0.621 0.519-1.474 1.75-1.474zM8.498 15.75c-0.64 0-1.107-0.389-0.66-2.094l0.733-3.025c0.127-0.484 0.148-0.678 0-0.678-0.191 0-1.022 0.334-1.512 0.664l-0.319-0.523c1.555-1.299 3.343-2.061 4.108-2.061 0.64 0 0.746 0.756 0.427 1.92l-0.84 3.18c-0.149 0.562-0.085 0.756 0.064 0.756 0.192 0 0.82-0.232 1.438-0.719l0.362 0.486c-1.513 1.512-3.162 2.094-3.801 2.094z"></path>
+			</symbol>
+		
+			<symbol id="i-star" viewBox="0 0 20 20">
+				<path d="M10 1.3l2.388 6.722h6.412l-5.232 3.948 1.871 6.928-5.439-4.154-5.438 4.154 1.87-6.928-5.233-3.948h6.412l2.389-6.722z"></path>
+		</svg>
+			</symbol>
+		
+			<symbol id="i-list" viewBox="0 0 20 20">
+				<path d="M16.4 9h-12.8c-0.552 0-0.6 0.447-0.6 1s0.048 1 0.6 1h12.8c0.552 0 0.6-0.447 0.6-1s-0.048-1-0.6-1zM16.4 13h-12.8c-0.552 0-0.6 0.447-0.6 1s0.048 1 0.6 1h12.8c0.552 0 0.6-0.447 0.6-1s-0.048-1-0.6-1zM3.6 7h12.8c0.552 0 0.6-0.447 0.6-1s-0.048-1-0.6-1h-12.8c-0.552 0-0.6 0.447-0.6 1s0.048 1 0.6 1z"></path>
+			</symbol>
+		
+			<symbol id="i-x" viewBox="0 0 100 100">
+				<path d="M84.707,68.752L65.951,49.998l18.75-18.752c0.777-0.777,0.777-2.036,0-2.813L71.566,15.295
+				c-0.777-0.777-2.037-0.777-2.814,0L49.999,34.047l-18.75-18.752c-0.746-0.747-2.067-0.747-2.814,0L15.297,28.431
+				c-0.373,0.373-0.583,0.88-0.583,1.407c0,0.527,0.21,1.034,0.583,1.407L34.05,49.998L15.294,68.753
+				c-0.373,0.374-0.583,0.88-0.583,1.407c0,0.528,0.21,1.035,0.583,1.407l13.136,13.137c0.373,0.373,0.881,0.583,1.41,0.583
+				c0.525,0,1.031-0.21,1.404-0.583l18.755-18.755l18.756,18.754c0.389,0.388,0.896,0.583,1.407,0.583c0.511,0,1.019-0.195,1.408-0.583
+				l13.138-13.137C85.484,70.789,85.484,69.53,84.707,68.752z"/>
+			</symbol>
+		
+			<symbol id="i-clock" viewBox="0 0 100 100">
+			<g>
+				<path d="M50,22.44c15.198,0,27.56,12.367,27.56,27.562c0,15.197-12.362,27.559-27.56,27.559
+					c-15.199,0-27.561-12.362-27.561-27.559C22.439,34.806,34.801,22.44,50,22.44 M50,12.5c-20.712,0-37.5,16.792-37.5,37.502
+					C12.5,70.712,29.288,87.5,50,87.5c20.712,0,37.5-16.788,37.5-37.498C87.5,29.292,70.712,12.5,50,12.5L50,12.5z"/>
+			</g>
+			<path d="M69.195,36.068l-3.897-3.902c-0.743-0.747-2.077-0.729-2.791,0L50.022,44.654l-6.863-6.863
+				c-0.743-0.743-2.046-0.743-2.789,0l-3.892,3.893c-0.372,0.364-0.585,0.873-0.585,1.402c0,0.525,0.204,1.025,0.578,1.394
+				l12.133,12.133c0.374,0.374,0.869,0.578,1.396,0.578c0.027,0,0.051,0,0.078,0c0.517-0.009,1-0.213,1.364-0.578l17.754-17.754
+				C69.965,38.087,69.965,36.835,69.195,36.068z"/>
+			</symbol>	
+		</svg>
+		<!-- /fabricator icons -->
+		<!-- fabricator menu -->
+		<div class="f-menu">
+		
+			<div class="f-controls">
+				<div class="f-control f-global-control" data-f-toggle-control="labels" title="Toggle Labels">
+					<svg>
+						<use xlink:href="#f-icon-labels" />
+					</svg>
+				</div>
+				<div class="f-control f-global-control" data-f-toggle-control="notes" title="Toggle Notes">
+					<svg>
+						<use xlink:href="#f-icon-notes" />
+					</svg>
+				</div>
+				<div class="f-control f-global-control" data-f-toggle-control="code" title="Toggle Code">
+					<svg>
+						<use xlink:href="#f-icon-code" />
+					</svg>
+				</div>
+			</div>
+		
+			<ul>
+		
+				<li>
+					<a href="index.html" class="f-menu__heading">Overview</a>
+				</li>
+		
+				<li>
+					<a href="atoms.html" class="f-menu__heading">Atoms</a>
+					<ul>
+						<li>
+							<a href="atoms.html#buttons">Buttons</a>
+						</li>
+						<li>
+							<a href="atoms.html#checkbox">Checkbox</a>
+						</li>
+						<li>
+							<a href="atoms.html#close">Close</a>
+						</li>
+						<li>
+							<a href="atoms.html#close--bright">Close  Bright</a>
+						</li>
+						<li>
+							<a href="atoms.html#dropdown">Dropdown</a>
+						</li>
+						<li>
+							<a href="atoms.html#icon-down">Icon Down</a>
+						</li>
+						<li>
+							<a href="atoms.html#icon-follow">Icon Follow</a>
+						</li>
+						<li>
+							<a href="atoms.html#icon-follow--right">Icon Follow  Right</a>
+						</li>
+						<li>
+							<a href="atoms.html#icon-search">Icon Search</a>
+						</li>
+						<li>
+							<a href="atoms.html#item-favorite">Item Favorite</a>
+						</li>
+						<li>
+							<a href="atoms.html#item-icon">Item Icon</a>
+						</li>
+						<li>
+							<a href="atoms.html#item-icon--task">Item Icon  Task</a>
+						</li>
+						<li>
+							<a href="atoms.html#item-initials">Item Initials</a>
+						</li>
+						<li>
+							<a href="atoms.html#item-properties">Item Properties</a>
+						</li>
+						<li>
+							<a href="atoms.html#lists">Lists</a>
+						</li>
+						<li>
+							<a href="atoms.html#nav-activity">Nav Activity</a>
+						</li>
+						<li>
+							<a href="atoms.html#nav-west">Nav West</a>
+						</li>
+						<li>
+							<a href="atoms.html#nav-west--rgba">Nav West  Rgba</a>
+						</li>
+						<li>
+							<a href="atoms.html#pagination">Pagination</a>
+						</li>
+						<li>
+							<a href="atoms.html#paragraph">Paragraph</a>
+						</li>
+						<li>
+							<a href="atoms.html#radio">Radio</a>
+						</li>
+						<li>
+							<a href="atoms.html#select">Select</a>
+						</li>
+						<li>
+							<a href="atoms.html#svg">Svg</a>
+						</li>
+						<li>
+							<a href="atoms.html#table">Table</a>
+						</li>
+						<li>
+							<a href="atoms.html#text-input">Text Input</a>
+						</li>
+						<li>
+							<a href="atoms.html#textarea">Textarea</a>
+						</li>
+						<li>
+							<a href="atoms.html#tool">Tool</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="molecules.html" class="f-menu__heading">Molecules</a>
+					<ul>
+						<li>
+							<a href="molecules.html#doc-actions">Doc Actions</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside">Doc Aside</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--application">Doc Aside  Application</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--classification">Doc Aside  Classification</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--classification-spec">Doc Aside  Classification Spec</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--classification-study">Doc Aside  Classification Study</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--document">Doc Aside  Document</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--general">Doc Aside  General</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--process">Doc Aside  Process</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--product">Doc Aside  Product</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--study">Doc Aside  Study</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--substance">Doc Aside  Substance</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--tags">Doc Aside  Tags</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--tracability-spec">Doc Aside  Tracability Spec</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--tracability-study">Doc Aside  Tracability Study</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside--viewed">Doc Aside  Viewed</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-aside-brief">Doc Aside Brief</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-header">Doc Header</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-header--for-approval">Doc Header  For Approval</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-header-actions">Doc Header Actions</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-header-actions-flat">Doc Header Actions Flat</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-list-header">Doc List Header</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-list-header--search">Doc List Header  Search</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-object">Doc Object</a>
+						</li>
+						<li>
+							<a href="molecules.html#doc-tools">Doc Tools</a>
+						</li>
+						<li>
+							<a href="molecules.html#header-top">Header Top</a>
+						</li>
+						<li>
+							<a href="molecules.html#list-content-types">List Content Types</a>
+						</li>
+						<li>
+							<a href="molecules.html#nav-aside-list">Nav Aside List</a>
+						</li>
+						<li>
+							<a href="molecules.html#panel-content">Panel Content</a>
+						</li>
+						<li>
+							<a href="molecules.html#panel-list">Panel List</a>
+						</li>
+						<li>
+							<a href="molecules.html#people-list-header">People List Header</a>
+						</li>
+						<li>
+							<a href="molecules.html#profile-header-actions-flat">Profile Header Actions Flat</a>
+						</li>
+						<li>
+							<a href="molecules.html#search-aside-list">Search Aside List</a>
+						</li>
+						<li>
+							<a href="molecules.html#search-aside-tags">Search Aside Tags</a>
+						</li>
+						<li>
+							<a href="molecules.html#search-typeahead">Search Typeahead</a>
+						</li>
+						<li>
+							<a href="molecules.html#tabs">Tabs</a>
+						</li>
+						<li>
+							<a href="molecules.html#task-actions">Task Actions</a>
+						</li>
+						<li>
+							<a href="molecules.html#task-approve">Task Approve</a>
+						</li>
+						<li>
+							<a href="molecules.html#task-attachment">Task Attachment</a>
+						</li>
+						<li>
+							<a href="molecules.html#task-header">Task Header</a>
+						</li>
+						<li>
+							<a href="molecules.html#task-header--rejected">Task Header  Rejected</a>
+						</li>
+						<li>
+							<a href="molecules.html#task-header--success">Task Header  Success</a>
+						</li>
+						<li>
+							<a href="molecules.html#task-list-header">Task List Header</a>
+						</li>
+						<li>
+							<a href="molecules.html#task-reference">Task Reference</a>
+						</li>
+						<li>
+							<a href="molecules.html#task-tools">Task Tools</a>
+						</li>
+						<li>
+							<a href="molecules.html#timeline-header">Timeline Header</a>
+						</li>
+						<li>
+							<a href="molecules.html#timeline-header--revised">Timeline Header  Revised</a>
+						</li>
+						<li>
+							<a href="molecules.html#timeline-header-activity">Timeline Header Activity</a>
+						</li>
+						<li>
+							<a href="molecules.html#timeline-header-activity-user">Timeline Header Activity User</a>
+						</li>
+						<li>
+							<a href="molecules.html#timeline-header-notification">Timeline Header Notification</a>
+						</li>
+						<li>
+							<a href="molecules.html#timeline-header-notification--revised">Timeline Header Notification  Revised</a>
+						</li>
+					</ul>
+				</li>
+				<li>
+					<a href="organisms.html" class="f-menu__heading">Organisms</a>
+					<ul>
+						<li>
+							<a href="organisms.html#doc-filters">Doc Filters</a>
+						</li>
+						<li>
+							<a href="organisms.html#doc-header--approve">Doc Header  Approve</a>
+						</li>
+						<li>
+							<a href="organisms.html#doc-header--draft">Doc Header  Draft</a>
+						</li>
+						<li>
+							<a href="organisms.html#doc-header--effective">Doc Header  Effective</a>
+						</li>
+						<li>
+							<a href="organisms.html#doc-header--review">Doc Header  Review</a>
+						</li>
+						<li>
+							<a href="organisms.html#doc-list">Doc List</a>
+						</li>
+						<li>
+							<a href="organisms.html#modal-approve">Modal Approve</a>
+						</li>
+						<li>
+							<a href="organisms.html#modal-dropdown">Modal Dropdown</a>
+						</li>
+						<li>
+							<a href="organisms.html#modal-related">Modal Related</a>
+						</li>
+						<li>
+							<a href="organisms.html#modal-search">Modal Search</a>
+						</li>
+						<li>
+							<a href="organisms.html#modal-sort">Modal Sort</a>
+						</li>
+						<li>
+							<a href="organisms.html#nav-aside">Nav Aside</a>
+						</li>
+						<li>
+							<a href="organisms.html#panel-approve">Panel Approve</a>
+						</li>
+						<li>
+							<a href="organisms.html#panel-content-types">Panel Content Types</a>
+						</li>
+						<li>
+							<a href="organisms.html#panel-history">Panel History</a>
+						</li>
+						<li>
+							<a href="organisms.html#panel-more">Panel More</a>
+						</li>
+						<li>
+							<a href="organisms.html#panel-notification">Panel Notification</a>
+						</li>
+						<li>
+							<a href="organisms.html#panel-properties">Panel Properties</a>
+						</li>
+						<li>
+							<a href="organisms.html#people-filters">People Filters</a>
+						</li>
+						<li>
+							<a href="organisms.html#people-list">People List</a>
+						</li>
+						<li>
+							<a href="organisms.html#profile-filters">Profile Filters</a>
+						</li>
+						<li>
+							<a href="organisms.html#profile-header">Profile Header</a>
+						</li>
+						<li>
+							<a href="organisms.html#profile-header--following">Profile Header  Following</a>
+						</li>
+						<li>
+							<a href="organisms.html#search-aside">Search Aside</a>
+						</li>
+						<li>
+							<a href="organisms.html#search-form">Search Form</a>
+						</li>
+						<li>
+							<a href="organisms.html#tab-bar">Tab Bar</a>
+						</li>
+						<li>
+							<a href="organisms.html#tab-bar-activity">Tab Bar Activity</a>
+						</li>
+						<li>
+							<a href="organisms.html#tab-bar-docs">Tab Bar Docs</a>
+						</li>
+						<li>
+							<a href="organisms.html#tab-bar-people">Tab Bar People</a>
+						</li>
+						<li>
+							<a href="organisms.html#tab-bar-transparent">Tab Bar Transparent</a>
+						</li>
+						<li>
+							<a href="organisms.html#task">Task</a>
+						</li>
+						<li>
+							<a href="organisms.html#task-filters">Task Filters</a>
+						</li>
+						<li>
+							<a href="organisms.html#task-header--approve">Task Header  Approve</a>
+						</li>
+						<li>
+							<a href="organisms.html#task-header--editing">Task Header  Editing</a>
+						</li>
+						<li>
+							<a href="organisms.html#task-header--review">Task Header  Review</a>
+						</li>
+						<li>
+							<a href="organisms.html#task-header--testing">Task Header  Testing</a>
+						</li>
+						<li>
+							<a href="organisms.html#task-list">Task List</a>
+						</li>
+						<li>
+							<a href="organisms.html#task-modal">Task Modal</a>
+						</li>
+						<li>
+							<a href="organisms.html#task-reveal">Task Reveal</a>
+						</li>
+						<li>
+							<a href="organisms.html#timeline-list">Timeline List</a>
+						</li>
+						<li>
+							<a href="organisms.html#timeline-list-activity">Timeline List Activity</a>
+						</li>
+						<li>
+							<a href="organisms.html#top-bar">Top Bar</a>
+						</li>
+						<li>
+							<a href="organisms.html#top-bar-header">Top Bar Header</a>
+						</li>
+					</ul>
+				</li>
+		
+				<li>
+					<a href="pages.html" class="f-menu__heading">Pages</a>
+					<ul>
+						<li>
+							<a href="pages/activity-timeline.html">Activity Timeline</a>
+						</li>
+						<li>
+							<a href="pages/doc--task.html">Doc  Task</a>
+						</li>
+						<li>
+							<a href="pages/doc-approve.html">Doc Approve</a>
+						</li>
+						<li>
+							<a href="pages/doc-landing.html">Doc Landing</a>
+						</li>
+						<li>
+							<a href="pages/doc-preview--clinical-study.html">Doc Preview  Clinical Study</a>
+						</li>
+						<li>
+							<a href="pages/doc-preview--history.html">Doc Preview  History</a>
+						</li>
+						<li>
+							<a href="pages/doc-preview--specification.html">Doc Preview  Specification</a>
+						</li>
+						<li>
+							<a href="pages/doc-preview-slide--smooth-alt.html">Doc Preview Slide  Smooth Alt</a>
+						</li>
+						<li>
+							<a href="pages/doc-preview-slide--smooth.html">Doc Preview Slide  Smooth</a>
+						</li>
+						<li>
+							<a href="pages/doc-preview-slide.html">Doc Preview Slide</a>
+						</li>
+						<li>
+							<a href="pages/doc-preview-smooth.html">Doc Preview Smooth</a>
+						</li>
+						<li>
+							<a href="pages/doc-preview-tablet.html">Doc Preview Tablet</a>
+						</li>
+						<li>
+							<a href="pages/doc-preview.html">Doc Preview</a>
+						</li>
+						<li>
+							<a href="pages/doc.html">Doc</a>
+						</li>
+						<li>
+							<a href="pages/people-landing.html">People Landing</a>
+						</li>
+						<li>
+							<a href="pages/profile-landing-tablet.html">Profile Landing Tablet</a>
+						</li>
+						<li>
+							<a href="pages/profile-landing.html">Profile Landing</a>
+						</li>
+						<li>
+							<a href="pages/search-landing.html">Search Landing</a>
+						</li>
+						<li>
+							<a href="pages/task-inbox.html">Task Inbox</a>
+						</li>
+						<li>
+							<a href="pages/task-single.html">Task Single</a>
+						</li>
+					</ul>
+				</li>
+		
+				<li>
+					<a href="docs.html" class="f-menu__heading">Docs</a>
+					<ul>
+						<li>
+							<a href="docs.html#javascript">Javascript</a>
+						</li>
+					</ul>
+				</li>
+		
+			</ul>
+		
+		
+		</div>
+		<!-- /fabricator menu -->
+		<div class="f-container">
+			<div class="f-control-bar">
+				<div class="f-control f-menu-toggle">
+					<svg>
+						<use xlink:href="#f-icon-menu" />
+					</svg>
+				</div>
+			</div>
+
+	
+<h1>Base</h1>
+
+<p>This UI toolkit is a highly-modular design system for rapid web page development. It contains different materials that can be assembled into more complex page layouts.</p>
+
+<p>This guide contains real working examples, code snippets, documentation, and style guidelines.</p>
+
+<h2>Pages</h2>
+<ul class="margin-bottom--2x">
+
+  <li>
+    <a href="pages/activity-timeline.html" class="f-item-heading">Activity Timeline</a>
+  </li>
+
+
+  <li>
+    <a href="pages/doc--task.html" class="f-item-heading">Doc  Task</a>
+  </li>
+
+
+  <li>
+    <a href="pages/doc-approve.html" class="f-item-heading">Doc Approve</a>
+  </li>
+
+
+  <li>
+    <a href="pages/doc-landing.html" class="f-item-heading">Doc Landing</a>
+  </li>
+
+
+  <li>
+    <a href="pages/doc-preview--clinical-study.html" class="f-item-heading">Doc Preview  Clinical Study</a>
+  </li>
+
+
+  <li>
+    <a href="pages/doc-preview--history.html" class="f-item-heading">Doc Preview  History</a>
+  </li>
+
+
+  <li>
+    <a href="pages/doc-preview--specification.html" class="f-item-heading">Doc Preview  Specification</a>
+  </li>
+
+
+  <li>
+    <a href="pages/doc-preview-slide--smooth-alt.html" class="f-item-heading">Doc Preview Slide  Smooth Alt</a>
+  </li>
+
+
+  <li>
+    <a href="pages/doc-preview-slide--smooth.html" class="f-item-heading">Doc Preview Slide  Smooth</a>
+  </li>
+
+
+  <li>
+    <a href="pages/doc-preview-slide.html" class="f-item-heading">Doc Preview Slide</a>
+  </li>
+
+
+  <li>
+    <a href="pages/doc-preview-smooth.html" class="f-item-heading">Doc Preview Smooth</a>
+  </li>
+
+
+  <li>
+    <a href="pages/doc-preview-tablet.html" class="f-item-heading">Doc Preview Tablet</a>
+  </li>
+
+
+  <li>
+    <a href="pages/doc-preview.html" class="f-item-heading">Doc Preview</a>
+  </li>
+
+
+  <li>
+    <a href="pages/doc.html" class="f-item-heading">Doc</a>
+  </li>
+
+
+  <li>
+    <a href="pages/people-landing.html" class="f-item-heading">People Landing</a>
+  </li>
+
+
+  <li>
+    <a href="pages/profile-landing-tablet.html" class="f-item-heading">Profile Landing Tablet</a>
+  </li>
+
+
+  <li>
+    <a href="pages/profile-landing.html" class="f-item-heading">Profile Landing</a>
+  </li>
+
+
+  <li>
+    <a href="pages/search-landing.html" class="f-item-heading">Search Landing</a>
+  </li>
+
+
+  <li>
+    <a href="pages/task-inbox.html" class="f-item-heading">Task Inbox</a>
+  </li>
+
+
+  <li>
+    <a href="pages/task-single.html" class="f-item-heading">Task Single</a>
+  </li>
+
+</ul>
+
+<!-- <h2>Usage</h2>
+
+<p>Start by adding the following files to your page:</p>
+
+<pre class="language-markup"><code class="language-markup">&lt;link rel=&quot;stylesheet&quot; href=&quot;assets/toolkit/styles/toolkit.css&quot;&gt;</code></pre>
+
+<pre class="language-markup"><code class="language-markup">&lt;script src=&quot;assets/toolkit/scripts/toolkit.js&quot;&gt;&lt;/script&gt;</code></pre>
+
+ -->
+
+<h2>Color</h2>
+
+	<div class="f-color-chips">
+		<div class="f-color-chip">
+			<div class="f-color-chip__name">Jet</div>
+			<div class="f-color-chip__color">#222</div>
+		</div>
+		<div class="f-color-chip">
+			<div class="f-color-chip__name">Oil</div>
+			<div class="f-color-chip__color">#333</div>
+		</div>
+		<div class="f-color-chip">
+			<div class="f-color-chip__name">Charcoal</div>
+			<div class="f-color-chip__color">#555</div>
+		</div>
+		<div class="f-color-chip">
+			<div class="f-color-chip__name">Steel</div>
+			<div class="f-color-chip__color">#666</div>
+		</div>
+		<div class="f-color-chip">
+			<div class="f-color-chip__name">Aluminum</div>
+			<div class="f-color-chip__color">#999</div>
+		</div>
+		<div class="f-color-chip">
+			<div class="f-color-chip__name">Iron</div>
+			<div class="f-color-chip__color">#ccc</div>
+		</div>
+		<div class="f-color-chip">
+			<div class="f-color-chip__name">Smoke</div>
+			<div class="f-color-chip__color">#eee</div>
+		</div>
+	</div>
+	<div class="f-color-chips">
+		<div class="f-color-chip">
+			<div class="f-color-chip__name">Primary</div>
+			<div class="f-color-chip__color">#46c3e3</div>
+		</div>
+		<div class="f-color-chip">
+			<div class="f-color-chip__name">Secondary</div>
+			<div class="f-color-chip__color">#89609e</div>
+		</div>
+		<div class="f-color-chip">
+			<div class="f-color-chip__name">Dim</div>
+			<div class="f-color-chip__color">#018ed5</div>
+		</div>
+		<div class="f-color-chip">
+			<div class="f-color-chip__name">Dark</div>
+			<div class="f-color-chip__color">#395f8d</div>
+		</div>
+		<div class="f-color-chip">
+			<div class="f-color-chip__name">Success</div>
+			<div class="f-color-chip__color">#7ace88</div>
+		</div>
+		<div class="f-color-chip">
+			<div class="f-color-chip__name">Warn</div>
+			<div class="f-color-chip__color">#f2cd01</div>
+		</div>
+		<div class="f-color-chip">
+			<div class="f-color-chip__name">Alert</div>
+			<div class="f-color-chip__color">#eb5a46</div>
+		</div>
+		<div class="f-color-chip">
+			<div class="f-color-chip__name">Warm</div>
+			<div class="f-color-chip__color">#ff8565</div>
+		</div>
+	</div>
+
+<h2>Typography</h2>
+
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam enim sunt sapiente molestias, sed dicta inventore consectetur beatae asperiores, aliquid laboriosam animi, praesentium repudiandae et, quam saepe sint cupiditate reiciendis.</p>
+
+<h1>Heading Level 1</h1>
+<h2>Heading Level 2</h2>
+<h3>Heading Level 3</h3>
+<h4>Heading Level 4</h4>
+<h5>Heading Level 5</h5>
+<h6>Heading Level 6</h6>
+
+<!-- <h1 class="serif">Heading Level 1</h1>
+<h2 class="serif">Heading Level 2</h2>
+<h3 class="serif">Heading Level 3</h3>
+<h4 class="serif">Heading Level 4</h4>
+<h5 class="serif">Heading Level 5</h5>
+<h6 class="serif">Heading Level 6</h6> -->
+
+
+		</div>
+	<script src="/assets/fabricator/scripts/f.js"></script>
+
+	<!-- toolkit scripts -->
+	<script src="/assets/toolkit/scripts/toolkit.js"></script>
+
+</body>
+</html>
