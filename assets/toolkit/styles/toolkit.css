@@ -6980,7 +6980,8 @@ ul.off-canvas-list .header-item a:hover {
   background-color: rgba(0, 0, 0, 0.1);
   margin: 1rem -1rem -1rem -1rem;
   padding-bottom: 1rem;
-  padding-top: 1rem; }
+  padding-top: 1rem;
+  overflow: hidden; }
   .icon-bar-flat ul {
     text-align: center; }
   .icon-bar-flat .ui-icon svg {
@@ -7635,6 +7636,8 @@ input[type="search"] {
 .overflow, .overflow-tall, .inner-wrap ui-view:first-child {
   overflow: hidden;
   overflow-y: auto; }
+  .overflow::-webkit-scrollbar, .overflow-tall::-webkit-scrollbar, .inner-wrap ui-view:first-child::-webkit-scrollbar {
+    display: none; }
 
 .overflow, .overflow-tall, .inner-wrap ui-view:first-child {
   height: 100%; }
@@ -7684,15 +7687,15 @@ input[type="search"] {
     color: #fff; }
   .task-single .task-header .task-status,
   .task-single-header .task-header .task-status {
-    font-size: .95rem;
-    color: rgba(255, 255, 255, 0.6);
+    font-size: 1.1rem;
+    color: #fff;
     margin-bottom: .5rem; }
   .task-single .task-header .byline-date,
   .task-single-header .task-header .byline-date {
     color: rgba(255, 255, 255, 0.8); }
 
 .task-single-header {
-  padding-top: 3rem !important; }
+  padding-top: 2rem !important; }
   .task-single-header.bg-draft {
     background-color: #79cbec !important; }
   .task-single-header.bg-review {
